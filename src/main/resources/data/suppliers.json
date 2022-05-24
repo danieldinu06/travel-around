@@ -1,0 +1,29 @@
+{
+    "suppliers": [
+        {
+            "id": 1,
+            "name": "Amazon",
+            "description": "Digital content and services"
+        },
+        {
+            "id": 2,
+            "name": "Lenovo",
+            "description": "Computers"
+        },
+        {
+            "id": 3,
+            "name": "CodeCool",
+            "description": "Best Programing School"
+        },
+        {
+            "id": 4,
+            "name": "Tesla",
+            "description": "Electric cars and rockets"
+        },
+        {
+            "id": 5,
+            "name": "Black Market",
+            "description": "Everything you will or won't need"
+        }
+    ]
+}
