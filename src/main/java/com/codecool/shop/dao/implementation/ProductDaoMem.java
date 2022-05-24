@@ -27,6 +27,10 @@ public class ProductDaoMem implements ProductDao {
         return instance;
     }
 
+    public static void setInstance(ProductDaoMem instance) {
+        ProductDaoMem.instance = instance;
+    }
+
     @Override
     public void add(Product product) {
         product.setId(data.size() + 1);

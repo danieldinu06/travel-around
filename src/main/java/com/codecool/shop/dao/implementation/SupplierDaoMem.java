@@ -23,6 +23,10 @@ public class SupplierDaoMem implements SupplierDao {
         return instance;
     }
 
+    public static void setInstance(SupplierDaoMem instance) {
+        SupplierDaoMem.instance = instance;
+    }
+
     @Override
     public void add(Supplier supplier) {
         supplier.setId(data.size() + 1);

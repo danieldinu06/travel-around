@@ -24,6 +24,10 @@ public class ProductCategoryDaoMem implements ProductCategoryDao {
         return instance;
     }
 
+    public static void setInstance(ProductCategoryDaoMem instance) {
+        ProductCategoryDaoMem.instance = instance;
+    }
+
     @Override
     public void add(ProductCategory category) {
         category.setId(data.size() + 1);
