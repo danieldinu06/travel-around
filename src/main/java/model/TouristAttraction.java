@@ -1,5 +1,8 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TouristAttraction {
 
     private String name;
@@ -10,12 +13,18 @@ public class TouristAttraction {
 
     private float rating;
 
+    private List<Hotel> hotels;
+
+    private List<Restaurant> restaurants;
+
 
     public TouristAttraction(String name, String image, String description, float rating) {
         this.name = name;
         this.image = image;
         this.description = description;
         this.rating = rating;
+        this.hotels = new ArrayList<>();
+        this.restaurants = new ArrayList<>();
     }
 
 
@@ -49,6 +58,14 @@ public class TouristAttraction {
 
     public void setRating(float rating) {
         this.rating = rating;
+    }
+
+    public List<Hotel> getHotels() {
+        return hotels;
+    }
+
+    public List<Restaurant> getRestaurants() {
+        return restaurants;
     }
 
     @Override
