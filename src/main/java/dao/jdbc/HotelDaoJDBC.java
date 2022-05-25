@@ -27,7 +27,7 @@ public class HotelDaoJDBC implements HotelDao {
     }
 
 //    @Override
-//    public void add(Product product) {
+//    public void add(Hotel hotel) {
 //        try (Connection conn = dataSource.getConnection()) {
 //            String sql = "INSERT INTO ";
 //
