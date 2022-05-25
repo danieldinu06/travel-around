@@ -32,6 +32,6 @@ public class HotelDaoJDBC implements HotelDao {
 //            String sql = "INSERT INTO ";
 //
 //        } catch (SQLException e) {
-//            logger.error("Error while adding product: '{}'", product.toString());
+//            logger.error("Error while adding hotel: '{}'", hotel.toString());
 //        }
 //    }
