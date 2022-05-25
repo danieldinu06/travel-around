@@ -3,8 +3,8 @@ package model;
 import java.util.Arrays;
 
 public class Hotel {
-    private String name;
-    private String image;
+    private final String name;
+    private final String image;
     private String description;
     private float rating;
     private int rooms_number;
