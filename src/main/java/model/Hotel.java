@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Arrays;
+
 public class Hotel {
     private String name;
     private String image;
@@ -7,12 +9,15 @@ public class Hotel {
     private float rating;
     private int rooms_number;
 
-    public Hotel(String name, String image, String description, float rating, int rooms_number) {
+    private Room[][] rooms;
+
+    public Hotel(String name, String image, String description, float rating, int rooms_number, Room[][] rooms) {
         this.name = name;
         this.image = image;
         this.description = description;
         this.rating = rating;
         this.rooms_number = rooms_number;
+        this.rooms = rooms;
     }
 
     public String getName() {
@@ -55,6 +60,14 @@ public class Hotel {
         this.rooms_number = rooms_number;
     }
 
+    public Room[][] getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(Room[][] rooms) {
+        this.rooms = rooms;
+    }
+
     @Override
     public String toString() {
         return "Hotel{" +
@@ -62,6 +75,7 @@ public class Hotel {
                 ", description='" + description + '\'' +
                 ", rating=" + rating +
                 ", rooms_number=" + rooms_number +
+                ", rooms=" + Arrays.toString(rooms) +
                 '}';
     }
 }
