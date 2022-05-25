@@ -11,6 +11,7 @@ DROP TABLE IF EXISTS transport CASCADE;
 DROP TABLE IF EXISTS cities CASCADE;
 DROP TABLE IF EXISTS seats CASCADE;
 DROP TABLE IF EXISTS booked_seats CASCADE;
+DROP TABLE IF EXISTS restaurants CASCADE;
 
 ---
 --- create tables
@@ -87,6 +88,14 @@ CREATE TABLE booked_seats
     end_date            TIMESTAMP
 );
 
+CREATE TABLE restaurant
+(
+    id                  SERIAL NOT NULL,
+    name                VARCHAR,
+    t_attraction_id     SERIAL,
+    rating              FLOAT
+);
+
 
 ---
 --- insert data
@@ -109,6 +118,8 @@ INSERT INTO seats VALUES( , );
 INSERT INTO rooms VALUES( , , , , );
 
 INSERT INTO booked_seats VALUES( , , , );
+
+INSERT INTO restaurant VALUES( , , , );
 
 ---
 --- add constraints
@@ -147,3 +158,7 @@ ALTER TABLE seats
 ALTER TABLE booked_seats
     ADD CONSTRAINT pk_booked_seat_id PRIMARY KEY(id),
     ADD CONSTRAINT fk_seat_id FOREIGN KEY (seat_id) REFERENCES seats(id);
+
+ALTER TABLE restaurant
+    ADD CONSTRAINT pk_restaurant_id PRIMARY KEY(id),
+    ADD CONSTRAINT fk_tourist_attrations_id FOREIGN KEY (t_attraction_id) REFERENCES tourist_attractions(id);
