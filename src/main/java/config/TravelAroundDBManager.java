@@ -1,18 +1,12 @@
 package config;
 
-import dao.HotelDao;
-import dao.RestaurantDao;
-import dao.TouristAttractionDao;
-import dao.jdbc.HotelDaoJDBC;
-import dao.jdbc.RestaurantDaoJDBC;
 import org.postgresql.ds.PGSimpleDataSource;
 
 import javax.sql.DataSource;
-import javax.xml.crypto.Data;
 import java.sql.SQLException;
 
-public class TravelArroundDBManager {
-    public TravelArroundDBManager() {
+public class TravelAroundDBManager {
+    public TravelAroundDBManager() {
 
     }
 
