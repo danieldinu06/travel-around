@@ -3,21 +3,33 @@ package model;
 import java.util.Arrays;
 
 public class Hotel {
+    private Integer id;
+
     private final String name;
+
     private final String image;
+
     private String description;
     private float rating;
+
     private int rooms_number;
 
     private Room[][] rooms;
 
-    public Hotel(String name, String image, String description, float rating, int rooms_number, Room[][] rooms) {
+    private TouristAttraction touristAttraction;
+
+    public Hotel(String name, String image, float rating) {
         this.name = name;
         this.image = image;
-        this.description = description;
         this.rating = rating;
-        this.rooms_number = rooms_number;
-        this.rooms = rooms;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -60,14 +72,27 @@ public class Hotel {
         this.rooms = rooms;
     }
 
+    public TouristAttraction getTouristAttraction() {
+        return touristAttraction;
+    }
+
+    public void setTouristAttraction(TouristAttraction touristAttraction) {
+        this.touristAttraction = touristAttraction;
+    }
+
     @Override
     public String toString() {
         return "Hotel{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", image='" + image + '\'' +
                 ", description='" + description + '\'' +
                 ", rating=" + rating +
                 ", rooms_number=" + rooms_number +
-                ", rooms=" + Arrays.toString(rooms) +
                 '}';
     }
 }
+
+
+
+
