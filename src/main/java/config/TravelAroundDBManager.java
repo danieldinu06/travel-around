@@ -4,6 +4,7 @@ import dao.HotelDao;
 import dao.RestaurantDao;
 import dao.TouristAttractionDao;
 import dao.jdbc.HotelDaoJDBC;
+import dao.jdbc.RestaurantDaoJDBC;
 import org.postgresql.ds.PGSimpleDataSource;
 
 import javax.sql.DataSource;
@@ -11,10 +12,6 @@ import javax.xml.crypto.Data;
 import java.sql.SQLException;
 
 public class TravelArroundDBManager {
-    HotelDao hotelDao;
-    RestaurantDao restaurantDao;
-    TouristAttractionDao touristAttractionDao;
-
     public TravelArroundDBManager() {
 
     }
@@ -35,20 +32,12 @@ public class TravelArroundDBManager {
         return dataSource;
     }
 
-    public void run() throws SQLException {
+    public DataSource run() throws SQLException {
         try {
-            setup();
+            return connect();
         } catch (SQLException throwables) {
             System.err.println("Could not connect to the database.");
-            return;
         }
-    }
-
-    private void setup() throws SQLException {
-        DataSource dataSource = connect();
-//        touristAttractionDao = new TouristAttractionJDBC(dataSource);
-//        hotelDao = new HotelDaoJDBC(dataSource, touristAttractionDao);
-//        restaurantDao = new RestaurantDaoJDBC(dataSource, hotelDao);
-//        roomDao = new RoomDaoJDBC(dataSource, hotelDao);
+        return null;
     }
 }
