@@ -88,7 +88,7 @@ CREATE TABLE booked_seats
     end_date            TIMESTAMP
 );
 
-CREATE TABLE restaurant
+CREATE TABLE restaurants
 (
     id                  SERIAL NOT NULL,
     name                VARCHAR,
@@ -101,25 +101,25 @@ CREATE TABLE restaurant
 --- insert data
 ---
 
-INSERT INTO tourist_attractions VALUES( , , , , );
-
-INSERT INTO hotels VALUES( , , , , , );
-
-INSERT INTO ta_h_seq VALUES( , , );
-
-INSERT INTO rooms VALUES( , , , , );
-
-INSERT INTO booked_rooms VALUES( , , , );
-
-INSERT INTO transport VALUES( , , , );
-
-INSERT INTO seats VALUES( , );
-
-INSERT INTO rooms VALUES( , , , , );
-
-INSERT INTO booked_seats VALUES( , , , );
-
-INSERT INTO restaurant VALUES( , , , );
+-- INSERT INTO tourist_attractions VALUES( , , , , );
+--
+-- INSERT INTO hotels VALUES( , , , , , );
+--
+-- INSERT INTO ta_h_seq VALUES( , , );
+--
+-- INSERT INTO rooms VALUES( , , , , );
+--
+-- INSERT INTO booked_rooms VALUES( , , , );
+--
+-- INSERT INTO transport VALUES( , , , );
+--
+-- INSERT INTO seats VALUES( , );
+--
+-- INSERT INTO rooms VALUES( , , , , );
+--
+-- INSERT INTO booked_seats VALUES( , , , );
+--
+-- INSERT INTO restaurants VALUES( , , , );
 
 ---
 --- add constraints
@@ -143,13 +143,13 @@ ALTER TABLE booked_rooms
     ADD CONSTRAINT pk_booked_room_id PRIMARY KEY(id),
     ADD CONSTRAINT fk_room_id FOREIGN KEY(room_id) REFERENCES rooms(id);
 
+ALTER TABLE cities
+    ADD CONSTRAINT pk_city_id PRIMARY KEY(id);
+
 ALTER TABLE transport
     ADD CONSTRAINT pk_transport_id PRIMARY KEY(id),
     ADD CONSTRAINT fk_tourist_attractions_id FOREIGN KEY (t_attraction_id) REFERENCES tourist_attractions(id),
     ADD CONSTRAINT fk_city_id FOREIGN KEY (city_id) REFERENCES cities(id);
-
-ALTER TABLE cities
-    ADD CONSTRAINT pk_city_id PRIMARY KEY(id);
 
 ALTER TABLE seats
     ADD CONSTRAINT pk_seat_id PRIMARY KEY(id),
@@ -159,6 +159,6 @@ ALTER TABLE booked_seats
     ADD CONSTRAINT pk_booked_seat_id PRIMARY KEY(id),
     ADD CONSTRAINT fk_seat_id FOREIGN KEY (seat_id) REFERENCES seats(id);
 
-ALTER TABLE restaurant
+ALTER TABLE restaurants
     ADD CONSTRAINT pk_restaurant_id PRIMARY KEY(id),
     ADD CONSTRAINT fk_tourist_attrations_id FOREIGN KEY (t_attraction_id) REFERENCES tourist_attractions(id);
