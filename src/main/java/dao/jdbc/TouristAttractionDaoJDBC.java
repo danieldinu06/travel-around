@@ -1,6 +1,7 @@
 package dao.jdbc;
 
 import dao.TouristAttractionDao;
+import model.TouristAttraction;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -15,7 +16,7 @@ public class TouristAttractionDaoJDBC implements TouristAttractionDao {
     }
 
     @Override
-    public void addTouristAttraction(model.TouristAttraction touristAttraction) {
+    public void addTouristAttraction(TouristAttraction touristAttraction) {
         try (Connection connection = dataSource.getConnection()) {
             String sql = "INSERT INTO tourist_attractions (name, image, description, rating) VALUES(?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -37,12 +38,12 @@ public class TouristAttractionDaoJDBC implements TouristAttractionDao {
     }
 
     @Override
-    public void removeTouristAttraction(model.TouristAttraction touristAttraction) {
+    public void removeTouristAttraction(TouristAttraction touristAttraction) {
 
     }
 
     @Override
-    public List<model.TouristAttraction> getAllTouristAttractions() {
+    public List<TouristAttraction> getAllTouristAttractions() {
         return null;
     }
 
