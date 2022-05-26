@@ -1,6 +1,6 @@
 package dao.jdbc;
 
-import dao.implementation.HotelDao;
+import dao.HotelDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,3 +35,4 @@ public class HotelDaoJDBC implements HotelDao {
 //            logger.error("Error while adding hotel: '{}'", hotel.toString());
 //        }
 //    }
+}

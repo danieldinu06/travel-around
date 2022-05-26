@@ -1,4 +1,4 @@
-package dao.implementation;
+package dao;
 
 import model.Hotel;
 
