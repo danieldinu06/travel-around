@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class ApplicationService {
     HotelDao hotelDao;
     RestaurantDao restaurantDao;
-    TouristAttractionDao touristAttractionDao
+    TouristAttractionDao touristAttractionDao;
     TravelAroundDBManager travelAroundDBManager;
     DataSource dataSource;
 
