@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TouristAttraction {
+    private Integer id;
 
     private String name;
 
@@ -27,6 +28,13 @@ public class TouristAttraction {
         this.restaurants = new ArrayList<>();
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
