@@ -28,7 +28,9 @@ public class ApplicationService {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    public void setupDAOs() {
         restaurantDao = new RestaurantDaoJDBC(dataSource);
         roomDao = new RoomDaoJDBC(dataSource);
         hotelDao = new HotelDaoJDBC(dataSource, roomDao);
