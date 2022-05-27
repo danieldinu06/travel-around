@@ -1,6 +1,8 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Hotel {
     private Integer id;
@@ -14,7 +16,7 @@ public class Hotel {
 
     private int rooms_number;
 
-    private Room[][] rooms;
+    private List<Room> rooms;
 
     private TouristAttraction touristAttraction;
 
@@ -22,6 +24,7 @@ public class Hotel {
         this.name = name;
         this.image = image;
         this.rating = rating;
+        this.rooms = new ArrayList<>();
     }
 
     public Integer getId() {
@@ -64,12 +67,8 @@ public class Hotel {
         this.rooms_number = rooms_number;
     }
 
-    public Room[][] getRooms() {
-        return rooms;
-    }
-
-    public void setRooms(Room[][] rooms) {
-        this.rooms = rooms;
+    public void addRoom(Room room) {
+        this.rooms.add(room);
     }
 
     public TouristAttraction getTouristAttraction() {
