@@ -1,6 +1,7 @@
 package dao.jdbc;
 
 import dao.HotelDao;
+import dao.RoomDao;
 import model.Hotel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,14 +14,16 @@ public class HotelDaoJDBC implements HotelDao {
     private static final Logger logger = LoggerFactory.getLogger(HotelDaoJDBC.class);
     private final DataSource dataSource;
     private static HotelDao instance;
+    private RoomDao roomDao;
 
-    private HotelDaoJDBC(DataSource dataSource) {
+    public HotelDaoJDBC(DataSource dataSource, RoomDao roomDao) {
         this.dataSource = dataSource;
+        this.roomDao = roomDao;
     }
 
-    public static HotelDao getInstance(DataSource dataSource) {
+    public static HotelDao getInstance(DataSource dataSource, RoomDao roomDao) {
         if (instance == null) {
-            instance = new HotelDaoJDBC(dataSource);
+            instance = new HotelDaoJDBC(dataSource, roomDao);
         }
         return instance;
     }
@@ -32,7 +35,7 @@ public class HotelDaoJDBC implements HotelDao {
     @Override
     public void add(Hotel hotel) {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "hotels (name, image, description, rating, rooms_number) VALUES(?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO hotels (name, image, description, rating, rooms_number) VALUES(?, ?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, hotel.getName());
             statement.setString(2, hotel.getImage());
