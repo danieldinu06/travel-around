@@ -1,9 +1,10 @@
 package config;
 
+import service.ApplicationService;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import java.sql.SQLException;
 
 
 @WebListener
