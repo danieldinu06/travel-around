@@ -1,5 +1,6 @@
-package config;
+package service;
 
+import config.TravelAroundDBManager;
 import dao.HotelDao;
 import dao.RestaurantDao;
 import dao.RoomDao;
