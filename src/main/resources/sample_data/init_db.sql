@@ -12,6 +12,7 @@ DROP TABLE IF EXISTS cities CASCADE;
 DROP TABLE IF EXISTS seats CASCADE;
 DROP TABLE IF EXISTS booked_seats CASCADE;
 DROP TABLE IF EXISTS restaurants CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
 
 ---
 --- create tables
@@ -96,6 +97,22 @@ CREATE TABLE restaurants
     rating              FLOAT
 );
 
+CREATE TYPE USER_STATUS AS ENUM
+(
+    'SIGNED_IN',
+    'SIGNED_OUT'
+);
+
+CREATE TABLE users
+(
+    id                  SERIAL NOT NULL,
+    name                VARCHAR,
+    password            VARCHAR,
+    phone_number        VARCHAR,
+    billing_address     VARCHAR,
+    user_status         USER_STATUS
+);
+
 
 ---
 --- insert data
@@ -120,6 +137,8 @@ CREATE TABLE restaurants
 -- INSERT INTO booked_seats VALUES( , , , );
 --
 -- INSERT INTO restaurants VALUES( , , , );
+
+-- INSERT INTO users VALUES( , , , , , );
 
 ---
 --- add constraints
@@ -162,3 +181,6 @@ ALTER TABLE booked_seats
 ALTER TABLE restaurants
     ADD CONSTRAINT pk_restaurant_id PRIMARY KEY(id),
     ADD CONSTRAINT fk_tourist_attrations_id FOREIGN KEY (t_attraction_id) REFERENCES tourist_attractions(id);
+
+ALTER TABLE users
+    ADD CONSTRAINT pk_user_id PRIMARY KEY(id);
