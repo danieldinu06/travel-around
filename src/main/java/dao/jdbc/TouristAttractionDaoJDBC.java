@@ -10,6 +10,10 @@ import java.util.List;
 public class TouristAttractionDaoJDBC implements TouristAttractionDao {
 
     private DataSource dataSource;
+    /*
+    *  Implementeaza HotelDao, RoomDao si
+    *  adauga le in constructor.
+    */
 
     public void TouristAttractionJDBC(DataSource dataSource) {
         this.dataSource = dataSource;
