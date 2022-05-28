@@ -2,6 +2,7 @@ package dao.jdbc;
 
 import dao.HotelDao;
 import dao.RoomDao;
+import dao.TouristAttractionDao;
 import model.Hotel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,16 +15,16 @@ public class HotelDaoJDBC implements HotelDao {
     private static final Logger logger = LoggerFactory.getLogger(HotelDaoJDBC.class);
     private final DataSource dataSource;
     private static HotelDao instance;
-    private RoomDao roomDao;
+    private TouristAttractionDao touristAttractionDao;
 
-    public HotelDaoJDBC(DataSource dataSource, RoomDao roomDao) {
+    public HotelDaoJDBC(DataSource dataSource, TouristAttractionDao touristAttractionDao) {
         this.dataSource = dataSource;
-        this.roomDao = roomDao;
+        this.touristAttractionDao = touristAttractionDao;
     }
 
-    public static HotelDao getInstance(DataSource dataSource, RoomDao roomDao) {
+    public static HotelDao getInstance(DataSource dataSource, TouristAttractionDao touristAttractionDao) {
         if (instance == null) {
-            instance = new HotelDaoJDBC(dataSource, roomDao);
+            instance = new HotelDaoJDBC(dataSource, touristAttractionDao);
         }
         return instance;
     }
