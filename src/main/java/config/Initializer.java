@@ -13,7 +13,6 @@ public class Initializer implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        applicationService = new ApplicationService();
-        applicationService.setupDAOs();
+        applicationService = ApplicationService.getInstance();
     }
 }
