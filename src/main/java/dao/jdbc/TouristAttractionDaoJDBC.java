@@ -9,18 +9,14 @@ import java.util.List;
 
 public class TouristAttractionDaoJDBC implements TouristAttractionDao {
 
-    private DataSource dataSource;
-    /*
-    *  Implementeaza HotelDao, RoomDao si
-    *  adauga le in constructor.
-    */
+    private final DataSource dataSource;
 
-    public void TouristAttractionJDBC(DataSource dataSource) {
+    public TouristAttractionDaoJDBC(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
     @Override
-    public void addTouristAttraction(TouristAttraction touristAttraction) {
+    public void add(TouristAttraction touristAttraction) {
         try (Connection connection = dataSource.getConnection()) {
             String sql = "INSERT INTO tourist_attractions (name, image, description, rating) VALUES(?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -34,7 +30,6 @@ public class TouristAttractionDaoJDBC implements TouristAttractionDao {
             resultSet.next();
             touristAttraction.setId(resultSet.getInt(1));
 
-
         }
         catch (SQLException e) {
             throw new RuntimeException("Error while adding new Tourist Attractions");
@@ -42,12 +37,39 @@ public class TouristAttractionDaoJDBC implements TouristAttractionDao {
     }
 
     @Override
-    public void removeTouristAttraction(TouristAttraction touristAttraction) {
+    public void remove(TouristAttraction touristAttraction) {
 
     }
 
     @Override
-    public List<TouristAttraction> getAllTouristAttractions() {
+    public TouristAttraction get(Integer touristAttractionId) {
+        try (Connection connection = dataSource.getConnection()) {
+            String sql = "SELECT (name, image, description, rating) FROM tourist_attractions WHERE id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.setInt(1, touristAttractionId);
+            ResultSet resultSet = statement.executeQuery();
+
+            if(!resultSet.next()) return null;
+
+            String name = resultSet.getString(1);
+            String image = resultSet.getString(2);
+            String description = resultSet.getString(3);
+            float rating = resultSet.getFloat(4);
+
+            TouristAttraction touristAttraction = new TouristAttraction(name, image, description, rating);
+
+            touristAttraction.setId(touristAttractionId);
+
+            return touristAttraction;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error while getting TouristAttraction.");
+        }
+    }
+
+    @Override
+    public List<TouristAttraction> getAll() {
         return null;
     }
 
