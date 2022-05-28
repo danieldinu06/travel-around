@@ -7,7 +7,8 @@ import model.TouristAttraction;
 import java.util.List;
 
 public interface TouristAttractionDao {
-    void addTouristAttraction(TouristAttraction touristAttraction);
-    void removeTouristAttraction(TouristAttraction touristAttraction);
-    List<TouristAttraction> getAllTouristAttractions();
+    void add(TouristAttraction touristAttraction);
+    void remove(TouristAttraction touristAttraction);
+    TouristAttraction get(Integer touristAttractionId);
+    List<TouristAttraction> getAll();
 }
