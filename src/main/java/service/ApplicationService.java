@@ -32,9 +32,9 @@ public class ApplicationService {
     }
 
     public void setupDAOs() {
-        restaurantDao = new RestaurantDaoJDBC(dataSource);
-        roomDao = new RoomDaoJDBC(dataSource);
-        hotelDao = new HotelDaoJDBC(dataSource, roomDao);
-        //touristAttractionDao = new TouristAttractionDaoJDBC(dataSource, hotelDao, restaurantDao);
+        touristAttractionDao = new TouristAttractionDaoJDBC(dataSource);
+        restaurantDao = new RestaurantDaoJDBC(dataSource, touristAttractionDao);
+        hotelDao = new HotelDaoJDBC(dataSource, touristAttractionDao);
+        roomDao = new RoomDaoJDBC(dataSource, hotelDao);
     }
 }
