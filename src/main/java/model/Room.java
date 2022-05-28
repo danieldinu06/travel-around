@@ -1,6 +1,7 @@
 package model;
 
 public class Room {
+    private Integer id;
     private final int beds;
     private final int floor;
     private float price;
@@ -11,6 +12,14 @@ public class Room {
         this.floor = floor;
         this.price = price;
         this.hotel = hotel;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Hotel getHotel() {
