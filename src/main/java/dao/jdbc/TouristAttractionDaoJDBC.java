@@ -5,6 +5,7 @@ import model.TouristAttraction;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TouristAttractionDaoJDBC implements TouristAttractionDao {
@@ -18,7 +19,7 @@ public class TouristAttractionDaoJDBC implements TouristAttractionDao {
     @Override
     public void add(TouristAttraction touristAttraction) {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "INSERT INTO tourist_attractions (name, image, description, rating) VALUES(?, ?, ?, ?)";
+            String sql = "INSERT INTO tourist_attractions (name, image, description, rating) VALUES (?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, touristAttraction.getName());
             statement.setString(2, touristAttraction.getImage());
@@ -44,7 +45,7 @@ public class TouristAttractionDaoJDBC implements TouristAttractionDao {
     @Override
     public TouristAttraction get(Integer touristAttractionId) {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "SELECT (name, image, description, rating) FROM tourist_attractions WHERE id = ?";
+            String sql = "SELECT name, image, description, rating FROM tourist_attractions WHERE id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
 
             statement.setInt(1, touristAttractionId);
@@ -70,7 +71,28 @@ public class TouristAttractionDaoJDBC implements TouristAttractionDao {
 
     @Override
     public List<TouristAttraction> getAll() {
-        return null;
+        try (Connection connection = dataSource.getConnection()) {
+            String sql = "SELECT id, name, image, description, rating FROM tourist_attractions;";
+            ResultSet resultSet = connection.createStatement().executeQuery(sql);
+
+            List<TouristAttraction> result = new ArrayList<>();
+            while(resultSet.next()) {
+                String name = resultSet.getString(2);
+                String image = resultSet.getString(3);
+                String description = resultSet.getString(4);
+                float rating = resultSet.getFloat(5);
+
+                TouristAttraction touristAttraction = new TouristAttraction(name, image, description, rating);
+                touristAttraction.setId(resultSet.getInt(1));
+
+                result.add(touristAttraction);
+            }
+
+            return result;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error while getting TouristAttraction.");
+        }
     }
 
 
