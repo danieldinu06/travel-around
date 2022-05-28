@@ -16,25 +16,35 @@ import java.sql.SQLException;
 public class ApplicationService {
     RoomDao roomDao;
     HotelDao hotelDao;
-    RestaurantDao restaurantDao;
-    TouristAttractionDao touristAttractionDao;
+    public RestaurantDao restaurantDao;
+    public TouristAttractionDao touristAttractionDao;
     TravelAroundDBManager travelAroundDBManager;
     DataSource dataSource;
-
-    public ApplicationService() {
-        travelAroundDBManager = new TravelAroundDBManager();
-
-        try {
-            dataSource = travelAroundDBManager.run();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+    private static ApplicationService instance = null;
 
     public void setupDAOs() {
         touristAttractionDao = new TouristAttractionDaoJDBC(dataSource);
         restaurantDao = new RestaurantDaoJDBC(dataSource, touristAttractionDao);
         hotelDao = new HotelDaoJDBC(dataSource, touristAttractionDao);
         roomDao = new RoomDaoJDBC(dataSource, hotelDao);
+    }
+
+    private ApplicationService() {
+        travelAroundDBManager = new TravelAroundDBManager();
+
+        try {
+            dataSource = travelAroundDBManager.run();
+            setupDAOs();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static ApplicationService getInstance() {
+        if (instance == null) {
+            instance = new ApplicationService();
+        }
+
+        return instance;
     }
 }
