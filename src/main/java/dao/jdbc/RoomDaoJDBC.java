@@ -1,5 +1,6 @@
 package dao.jdbc;
 
+import dao.HotelDao;
 import dao.RoomDao;
 import model.Hotel;
 import model.Room;
@@ -9,9 +10,11 @@ import java.util.List;
 
 public class RoomDaoJDBC implements RoomDao {
     private final DataSource dataSource;
+    private HotelDao hotelDao;
 
-    public RoomDaoJDBC(DataSource dataSource) {
+    public RoomDaoJDBC(DataSource dataSource, HotelDao hotelDao) {
         this.dataSource = dataSource;
+        this.hotelDao = hotelDao;
     }
 
     @Override
