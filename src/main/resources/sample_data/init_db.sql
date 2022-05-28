@@ -13,6 +13,7 @@ DROP TABLE IF EXISTS seats CASCADE;
 DROP TABLE IF EXISTS booked_seats CASCADE;
 DROP TABLE IF EXISTS restaurants CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
+DROP TYPE IF EXISTS user_status;
 
 ---
 --- create tables
@@ -112,33 +113,6 @@ CREATE TABLE users
     billing_address     VARCHAR,
     user_status         USER_STATUS
 );
-
-
----
---- insert data
----
-
--- INSERT INTO tourist_attractions VALUES( , , , , );
---
--- INSERT INTO hotels VALUES( , , , , , );
---
--- INSERT INTO ta_h_seq VALUES( , , );
---
--- INSERT INTO rooms VALUES( , , , , );
---
--- INSERT INTO booked_rooms VALUES( , , , );
---
--- INSERT INTO transport VALUES( , , , );
---
--- INSERT INTO seats VALUES( , );
---
--- INSERT INTO rooms VALUES( , , , , );
---
--- INSERT INTO booked_seats VALUES( , , , );
---
--- INSERT INTO restaurants VALUES( , , , );
-
--- INSERT INTO users VALUES( , , , , , );
 
 ---
 --- add constraints
