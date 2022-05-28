@@ -18,7 +18,6 @@ public class TouristAttraction {
 
     private List<Restaurant> restaurants;
 
-
     public TouristAttraction(String name, String image, String description, float rating) {
         this.name = name;
         this.image = image;
