@@ -7,6 +7,7 @@ import model.TouristAttraction;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RestaurantDaoJDBC implements RestaurantDao {
@@ -43,8 +44,8 @@ public class RestaurantDaoJDBC implements RestaurantDao {
     @Override
     public Restaurant get(Integer id) {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "SELECT (name, t_attraction_id, rating) FROM restaurants WHERE id = ?";
-            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            String sql = "SELECT name, t_attraction_id, rating FROM restaurants WHERE id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
 
             statement.setInt(1, id);
 
@@ -69,11 +70,59 @@ public class RestaurantDaoJDBC implements RestaurantDao {
 
     @Override
     public List<Restaurant> getAll() {
-        return null;
+        try (Connection connection = dataSource.getConnection()) {
+            String sql = "SELECT name, t_attraction_id, rating FROM restaurants";
+            ResultSet resultSet = connection.createStatement().executeQuery(sql);
+
+            List<Restaurant> result = new ArrayList<>();
+            while (resultSet.next()) {
+                int t_attraction_id = resultSet.getInt(2);
+                TouristAttraction touristAttraction = touristAttractionDao.get(t_attraction_id);
+
+                String name = resultSet.getString(1);
+                float rating = resultSet.getFloat(2);
+
+                Restaurant restaurant = new Restaurant(name, rating, touristAttraction);
+                restaurant.setId(resultSet.getInt(1));
+
+                result.add(restaurant);
+
+            }
+
+            return result;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error while getting a Restaurant");
+        }
     }
 
     @Override
     public List<Restaurant> getAllByTouristAttraction(Integer id) {
-        return null;
+        try (Connection connection = dataSource.getConnection()) {
+            String sql = "SELECT name, t_attraction_id, rating FROM restaurants WHERE t_attraction_id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+
+            List<Restaurant> result = new ArrayList<>();
+            while (resultSet.next()) {
+                TouristAttraction touristAttraction = touristAttractionDao.get(id);
+
+                String name = resultSet.getString(1);
+                float rating = resultSet.getFloat(2);
+
+                Restaurant restaurant = new Restaurant(name, rating, touristAttraction);
+                restaurant.setId(resultSet.getInt(1));
+
+                result.add(restaurant);
+
+            }
+
+            return result;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error while getting a Restaurant");
+        }
     }
 }
