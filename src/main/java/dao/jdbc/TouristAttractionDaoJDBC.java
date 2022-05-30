@@ -37,10 +37,41 @@ public class TouristAttractionDaoJDBC implements TouristAttractionDao {
         }
     }
 
-    @Override
-    public void remove(TouristAttraction touristAttraction) {
-
-    }
+//    @Override
+//    public void remove(int id) {
+//
+//        String sql = "DELETE FROM product WHERE id ='" + id + "';";
+//        dataSource.executeQuery(sql);
+//    }
+//
+//    private List<TouristAttraction> getProducts(String query) {
+//        List<TouristAttraction> resultList = new ArrayList<>();
+//
+//        try (Connection connection = dataSource.getConnection();
+//             Statement statement = connection.createStatement();
+//             ResultSet resultSet = statement.executeQuery(query);
+//
+//        ) {
+//            TouristAttractionDao productCategoryDataStore = TouristAttractionDaoJDBC.get();
+//
+//
+//            while (resultSet.next()) {
+//
+//                TouristAttraction product = new TouristAttraction(
+//                        resultSet.getString("name"),
+//                        resultSet.getString("description"),
+//                        resultSet.getString("description"),
+//                        resultSet.getString("image"),
+//                        resultSet.getFloat("rating");
+//
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return resultList;
+//    }
+//
 
     @Override
     public TouristAttraction get(Integer touristAttractionId) {
