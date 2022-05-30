@@ -1,8 +1,10 @@
 package controller;
 
 import config.TemplateEngineUtil;
+import model.TouristAttraction;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
+import service.ApplicationService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,23 +28,14 @@ public class TouristAttractionServlet extends HttpServlet {
 
         PrintWriter printWriter = resp.getWriter();
         String title = "Tourist Attractions";
-
-        //TODO: add attributes to display the HTML Tourist Attraction template
-        //Assignee - Razvan
-
-
         TemplateEngine templateEngine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext webContext = new WebContext(req, resp, req.getServletContext());
 
-        /*
-        * Aici vom seta variabilele contextului nostru de web.
-        * Adica tourisitAttraction in felul asta:
-        *
-        *   webContext.setVariable("touristAttractions, ceva);
-        *
-        *   Acel CEVA de mai sus va fi un obiect de tip TouristAttractionDaoJDBC asupra caruia vom folosi functia getAll.
-        */
-
+        ApplicationService applicationService = ApplicationService.getInstance();
+        TouristAttraction touristAttraction = applicationService.touristAttractionDao.get(1);
+        webContext.setVariable("touristAttraction", touristAttraction);
         templateEngine.process("index.html", webContext);
+
+
     }
 }
