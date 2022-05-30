@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 public class ApplicationService {
     RoomDao roomDao;
-    HotelDao hotelDao;
+    public HotelDao hotelDao;
     public RestaurantDao restaurantDao;
     public TouristAttractionDao touristAttractionDao;
     TravelAroundDBManager travelAroundDBManager;
