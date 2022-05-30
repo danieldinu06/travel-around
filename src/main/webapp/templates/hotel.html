@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Hotels</title>
+</head>
+<body>
+<div class="header text-center">
+    <h1>Hotels</h1>
+</div>
+
+<div class="container">
+    <div th:each="hotel : ${hotels}">
+        <div class="item" style="display: flex">
+            <div class="image">image</div>
+            <div class="details">
+                <div class="rating">rating</div>
+                <div class="description">description</div>
+                <div class="rooms_number">rooms_number</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
