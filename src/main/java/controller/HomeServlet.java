@@ -1,6 +1,6 @@
 package controller;
 
-import config.TemplateEngineUtil;
+import  config.TemplateEngineUtil;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(name = "touristAttractionServlet", urlPatterns = {"/"}, loadOnStartup = 1)
-public class TouristAttractionServlet extends HttpServlet {
+public class HomeServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
