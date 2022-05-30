@@ -44,7 +44,7 @@ public class TouristAttractionDaoJDBC implements TouristAttractionDao {
 //        dataSource.executeQuery(sql);
 //    }
 //
-//    private List<TouristAttraction> getProducts(String query) {
+//    private List<TouristAttraction> get(String query) {
 //        List<TouristAttraction> resultList = new ArrayList<>();
 //
 //        try (Connection connection = dataSource.getConnection();
