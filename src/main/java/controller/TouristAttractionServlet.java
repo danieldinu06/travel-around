@@ -26,15 +26,14 @@ public class TouristAttractionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        PrintWriter printWriter = resp.getWriter();
-        String title = "Tourist Attractions";
         TemplateEngine templateEngine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext webContext = new WebContext(req, resp, req.getServletContext());
 
         ApplicationService applicationService = ApplicationService.getInstance();
         TouristAttraction touristAttraction = applicationService.touristAttractionDao.get(1);
+
         webContext.setVariable("touristAttraction", touristAttraction);
-        templateEngine.process("index.html", webContext);
+        templateEngine.process("index.html", webContext, resp.getWriter());
 
 
     }
