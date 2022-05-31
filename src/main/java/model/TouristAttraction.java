@@ -8,8 +8,6 @@ public class TouristAttraction {
 
     private String name;
 
-    private String image;
-
     private String description;
 
     private float rating;
@@ -18,9 +16,8 @@ public class TouristAttraction {
 
     private List<Restaurant> restaurants;
 
-    public TouristAttraction(String name, String image, String description, float rating) {
+    public TouristAttraction(String name, String description, float rating) {
         this.name = name;
-        this.image = image;
         this.description = description;
         this.rating = rating;
         this.hotels = new ArrayList<>();
@@ -41,14 +38,6 @@ public class TouristAttraction {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public String getDescription() {
@@ -73,18 +62,5 @@ public class TouristAttraction {
 
     public List<Restaurant> getRestaurants() {
         return restaurants;
-    }
-
-    @Override
-    public String toString() {
-        return "TouristAttraction{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", image='" + image + '\'' +
-                ", description='" + description + '\'' +
-                ", rating=" + rating +
-                ", hotels=" + hotels +
-                ", restaurants=" + restaurants +
-                '}';
     }
 }
