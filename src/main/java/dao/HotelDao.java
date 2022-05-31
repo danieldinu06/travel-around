@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface HotelDao {
     void add(Hotel hotel);
-    Hotel get(String name);
+    Hotel get(Integer id);
     List<Hotel> getHotelsByTouristAttraction();
 }
