@@ -32,8 +32,18 @@ public class TouristAttractionServlet extends HttpServlet {
         ApplicationService applicationService = ApplicationService.getInstance();
         TouristAttraction touristAttraction = applicationService.touristAttractionDao.get(1);
 
+        String[] itemsBran = new String[6];
+        itemsBran[0] = "../static/img/bran_castle/bran1.jpg";
+        itemsBran[1] = "../static/img/bran_castle/bran2.jpg";
+        itemsBran[2] = "../static/img/bran_castle/bran3.jpg";
+        itemsBran[3] = "../static/img/bran_castle/bran4.jpg";
+        itemsBran[4] = "../static/img/bran_castle/bran5.jpg";
+        itemsBran[5] = "../static/img/bran_castle/bran6.jpg";
+
         webContext.setVariable("touristAttraction", touristAttraction);
-        templateEngine.process("index.html", webContext, resp.getWriter());
+        webContext.setVariable("itemsBran", itemsBran);
+        webContext.setVariable("branid", "bran");
+        templateEngine.process("carousel_template.html", webContext, resp.getWriter());
 
 
     }
