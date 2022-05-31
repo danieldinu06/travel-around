@@ -78,9 +78,11 @@ public class TouristAttractionDaoJDBC implements TouristAttractionDao {
                 String name = resultSet.getString(2);
                 String description = resultSet.getString(3);
                 float rating = resultSet.getFloat(4);
+                List<String> images = getImages(resultSet.getInt(1));
 
                 TouristAttraction touristAttraction = new TouristAttraction(name, description, rating);
                 touristAttraction.setId(resultSet.getInt(1));
+                touristAttraction.setImages(images);
 
                 result.add(touristAttraction);
             }
@@ -92,6 +94,28 @@ public class TouristAttractionDaoJDBC implements TouristAttractionDao {
         }
     }
 
+    public List<String> getImages(Integer touristAttractionId) {
+        try (Connection connection = dataSource.getConnection()) {
+            String sql = "SELECT image FROM tourist_attraction_images\n" +
+                    "INNER JOIN ta_i_seq tis on tourist_attraction_images.id = tis.ta_image_id\n" +
+                    "LEFT OUTER JOIN tourist_attractions ta on ta.id = tis.t_attraction_id\n" +
+                    "WHERE ta.id = ?;";
+            PreparedStatement statement = connection.prepareStatement(sql);
 
+            statement.setInt(1, touristAttractionId);
+            ResultSet resultSet = statement.executeQuery();
+
+            List<String> result = new ArrayList<>();
+            while(resultSet.next()) {
+                String image = resultSet.getString(1);
+                result.add(image);
+            }
+
+            return result;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error while getting TouristAttraction.");
+        }
+    }
 
 }
