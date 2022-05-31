@@ -1,14 +1,8 @@
 package service;
 
 import config.TravelAroundDBManager;
-import dao.HotelDao;
-import dao.RestaurantDao;
-import dao.RoomDao;
-import dao.TouristAttractionDao;
-import dao.jdbc.HotelDaoJDBC;
-import dao.jdbc.RestaurantDaoJDBC;
-import dao.jdbc.RoomDaoJDBC;
-import dao.jdbc.TouristAttractionDaoJDBC;
+import dao.*;
+import dao.jdbc.*;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
@@ -18,6 +12,7 @@ public class ApplicationService {
     public HotelDao hotelDao;
     public RestaurantDao restaurantDao;
     public TouristAttractionDao touristAttractionDao;
+    public UserDao userDao;
     TravelAroundDBManager travelAroundDBManager;
     DataSource dataSource;
     private static ApplicationService instance = null;
@@ -27,6 +22,7 @@ public class ApplicationService {
         restaurantDao = new RestaurantDaoJDBC(dataSource, touristAttractionDao);
         hotelDao = new HotelDaoJDBC(dataSource, touristAttractionDao);
         roomDao = new RoomDaoJDBC(dataSource, hotelDao);
+        userDao = new UserDaoJDBC(dataSource);
     }
 
     private ApplicationService() {
