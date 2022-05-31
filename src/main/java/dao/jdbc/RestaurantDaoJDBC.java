@@ -71,22 +71,21 @@ public class RestaurantDaoJDBC implements RestaurantDao {
     @Override
     public List<Restaurant> getAll() {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "SELECT name, t_attraction_id, rating FROM restaurants";
+            String sql = "SELECT id, name, t_attraction_id, rating FROM restaurants";
             ResultSet resultSet = connection.createStatement().executeQuery(sql);
 
             List<Restaurant> result = new ArrayList<>();
             while (resultSet.next()) {
-                int t_attraction_id = resultSet.getInt(2);
+                int t_attraction_id = resultSet.getInt(3);
                 TouristAttraction touristAttraction = touristAttractionDao.get(t_attraction_id);
 
-                String name = resultSet.getString(1);
-                float rating = resultSet.getFloat(2);
+                String name = resultSet.getString(2);
+                float rating = resultSet.getFloat(4);
 
                 Restaurant restaurant = new Restaurant(name, rating, touristAttraction);
                 restaurant.setId(resultSet.getInt(1));
 
                 result.add(restaurant);
-
             }
 
             return result;
