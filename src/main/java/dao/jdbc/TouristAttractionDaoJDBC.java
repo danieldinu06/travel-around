@@ -44,7 +44,7 @@ public class TouristAttractionDaoJDBC implements TouristAttractionDao {
     @Override
     public TouristAttraction get(Integer touristAttractionId) {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "SELECT name, description, rating FROM tourist_attractions WHERE id = ?";
+            String sql = "SELECT id, name, description, rating FROM tourist_attractions WHERE id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
 
             statement.setInt(1, touristAttractionId);
@@ -52,13 +52,14 @@ public class TouristAttractionDaoJDBC implements TouristAttractionDao {
 
             if(!resultSet.next()) return null;
 
-            String name = resultSet.getString(1);
-            String description = resultSet.getString(2);
-            float rating = resultSet.getFloat(3);
+            String name = resultSet.getString(2);
+            String description = resultSet.getString(3);
+            float rating = resultSet.getFloat(4);
 
+            List<String> images = getImages(resultSet.getInt(1));
             TouristAttraction touristAttraction = new TouristAttraction(name, description, rating);
-
             touristAttraction.setId(touristAttractionId);
+            touristAttraction.setImages(images);
 
             return touristAttraction;
 
