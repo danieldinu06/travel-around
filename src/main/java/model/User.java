@@ -3,15 +3,14 @@ package model;
 import model.utils.UserStatus;
 
 public class User {
-    private int id;
+    private Integer id;
     private String name;
     private String password;
     private String phoneNumber;
     private String billingAddress;
     private UserStatus status;
 
-    public User(int id, String name, String password, String phoneNumber, String billingAddress, UserStatus status) {
-        this.id = id;
+    public User(String name, String password, String phoneNumber, String billingAddress, UserStatus status) {
         this.name = name;
         this.password = password;
         this.phoneNumber = phoneNumber;
@@ -19,11 +18,11 @@ public class User {
         this.status = status;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
