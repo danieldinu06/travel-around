@@ -1,7 +1,14 @@
-#carouselExampleIndicators {
-    height: 400px;
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+[id^="carouselExampleIndicators-"] {
+    width: auto;
+    height: 300px;
+    max-height: 300px;
 }
 
 .d-block {
-    height: 400px;
+    height: 300px;
 }

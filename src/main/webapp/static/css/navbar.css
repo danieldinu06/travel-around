@@ -1,0 +1,37 @@
+/* .btn.btn-outline-success {
+  position: absolute;
+  left: 95%;
+}
+
+.form-control.me-2 {
+  left: 70%;
+} */
+
+thead,
+tfoot {
+    background-color: #A9A9A9;
+    color: #fff;
+}
+
+tbody {
+    background-color: #F9F9FF;
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px solid darkgray;
+    margin-top: 10px;
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    font-size: .8rem;
+}
+
+td,
+th {
+    border: 1px solid darkgrey;
+    padding: 5px 10px;
+}
+
+td {
+    text-align: center;
+}
