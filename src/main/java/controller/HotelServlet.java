@@ -21,7 +21,7 @@ public class HotelServlet extends HttpServlet {
         WebContext webContext = new WebContext(req, resp, req.getServletContext());
 
         ApplicationService applicationService = ApplicationService.getInstance();
-        Hotel hotel = applicationService.hotelDao.get(String.valueOf(1));
+        Hotel hotel = applicationService.hotelDao.get(1);
         webContext.setVariable("hotel", hotel);
         templateEngine.process("hotels.html", webContext, resp.getWriter());
     }
