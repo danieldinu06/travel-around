@@ -1,6 +1,7 @@
 package dao;
 
 import model.Hotel;
+import model.TouristAttraction;
 
 import java.util.List;
 
