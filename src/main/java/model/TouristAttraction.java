@@ -11,6 +11,7 @@ public class TouristAttraction {
     private String description;
 
     private float rating;
+    private List<String> images;
 
     private List<Hotel> hotels;
 
@@ -22,6 +23,14 @@ public class TouristAttraction {
         this.rating = rating;
         this.hotels = new ArrayList<>();
         this.restaurants = new ArrayList<>();
+    }
+
+    public List<String> getImages() {
+        return images;
+    }
+
+    public void setImages(List<String> images) {
+        this.images = images;
     }
 
     public Integer getId() {
