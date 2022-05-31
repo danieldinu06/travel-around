@@ -18,9 +18,12 @@ public class Hotel {
 
     private TouristAttraction touristAttraction;
 
-    public Hotel(String name, float rating) {
+    public Hotel(String name, String description, float rating, int rooms_number, TouristAttraction touristAttraction) {
         this.name = name;
+        this.description = description;
         this.rating = rating;
+        this.rooms_number = rooms_number;
+        this.touristAttraction = touristAttraction;
         this.rooms = new ArrayList<>();
     }
 
