@@ -3,9 +3,15 @@
 ---
 
 DROP TABLE IF EXISTS tourist_attractions CASCADE;
+DROP TABLE IF EXISTS ta_i_seq CASCADE;
+DROP TABLE IF EXISTS tourist_attraction_images CASCADE;
 DROP TABLE IF EXISTS hotels CASCADE;
+DROP TABLE IF EXISTS h_i_seq CASCADE;
+DROP TABLE IF EXISTS hotel_images CASCADE;
 DROP TABLE IF EXISTS ta_h_seq CASCADE;
 DROP TABLE IF EXISTS rooms CASCADE;
+DROP TABLE IF EXISTS r_i_seq CASCADE;
+DROP TABLE IF EXISTS room_images CASCADE;
 DROP TABLE IF EXISTS booked_rooms CASCADE;
 DROP TABLE IF EXISTS transport CASCADE;
 DROP TABLE IF EXISTS cities CASCADE;
@@ -21,21 +27,43 @@ DROP TYPE IF EXISTS user_status;
 
 CREATE TABLE tourist_attractions
 (
-    id              SERIAL NOT NULL,
-    name            VARCHAR,
-    image           VARCHAR,
-    description     VARCHAR,
-    rating          FLOAT
+    id                  SERIAL NOT NULL,
+    name                VARCHAR,
+    description         VARCHAR,
+    rating              FLOAT
+);
+
+CREATE TABLE ta_i_seq
+(
+    t_attraction_id     SERIAL,
+    ta_image_id         SERIAL
+);
+
+CREATE TABLE tourist_attraction_images
+(
+    id                  SERIAL NOT NULL,
+    image               VARCHAR
 );
 
 CREATE TABLE hotels
 (
     id                  SERIAL NOT NULL,
     name                VARCHAR,
-    image               VARCHAR,
     description         VARCHAR,
     rating              FLOAT,
     rooms_number        INT
+);
+
+CREATE TABLE h_i_seq
+(
+    hotel_id            SERIAL,
+    hotel_image_id      SERIAL
+);
+
+CREATE TABLE hotel_images
+(
+    id                  SERIAL NOT NULL,
+    image               VARCHAR
 );
 
 CREATE TABLE ta_h_seq
@@ -52,6 +80,18 @@ CREATE TABLE rooms
     bedrooms            INT,
     floor               INT,
     price               FLOAT
+);
+
+CREATE TABLE r_i_seq
+(
+    room_id             SERIAL,
+    room_image_id       SERIAL
+);
+
+CREATE TABLE room_images
+(
+    id                  SERIAL NOT NULL,
+    image               VARCHAR
 );
 
 CREATE TABLE booked_rooms
@@ -158,3 +198,24 @@ ALTER TABLE restaurants
 
 ALTER TABLE users
     ADD CONSTRAINT pk_user_id PRIMARY KEY(id);
+
+ALTER TABLE tourist_attraction_images
+    ADD CONSTRAINT pk_ta_images_id PRIMARY KEY(id);
+
+ALTER TABLE hotel_images
+    ADD CONSTRAINT pk_hotel_images_id PRIMARY KEY(id);
+
+ALTER TABLE room_images
+    ADD CONSTRAINT pk_room_images_id PRIMARY KEY(id);
+
+ALTER TABLE ta_i_seq
+    ADD CONSTRAINT fk_ta_id FOREIGN KEY (t_attraction_id) REFERENCES tourist_attractions(id),
+    ADD CONSTRAINT fk_ta_i_id FOREIGN KEY (ta_image_id) REFERENCES tourist_attraction_images(id);
+
+ALTER TABLE h_i_seq
+    ADD CONSTRAINT fk_h_id FOREIGN KEY (hotel_id) REFERENCES hotels(id),
+    ADD CONSTRAINT fk_h_i_id FOREIGN KEY (hotel_image_id) REFERENCES hotel_images(id);
+
+ALTER TABLE r_i_seq
+    ADD CONSTRAINT fk_r_id FOREIGN KEY (room_id) REFERENCES rooms(id),
+    ADD CONSTRAINT fk_r_i_id FOREIGN KEY (room_image_id) REFERENCES room_images(id);
