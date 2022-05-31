@@ -9,8 +9,6 @@ public class Hotel {
 
     private final String name;
 
-    private final String image;
-
     private String description;
     private float rating;
 
@@ -20,9 +18,8 @@ public class Hotel {
 
     private TouristAttraction touristAttraction;
 
-    public Hotel(String name, String image, float rating) {
+    public Hotel(String name, float rating) {
         this.name = name;
-        this.image = image;
         this.rating = rating;
         this.rooms = new ArrayList<>();
     }
@@ -39,9 +36,6 @@ public class Hotel {
         return name;
     }
 
-    public String getImage() {
-        return image;
-    }
 
     public String getDescription() {
         return description;
@@ -77,18 +71,6 @@ public class Hotel {
 
     public void setTouristAttraction(TouristAttraction touristAttraction) {
         this.touristAttraction = touristAttraction;
-    }
-
-    @Override
-    public String toString() {
-        return "Hotel{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", image='" + image + '\'' +
-                ", description='" + description + '\'' +
-                ", rating=" + rating +
-                ", rooms_number=" + rooms_number +
-                '}';
     }
 }
 
