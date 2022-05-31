@@ -27,6 +27,19 @@
 </div>
 
 <div class="container">
+
+
+    <div th:insert="carousel_template :: carousel(id='carouselExampleIndicators-bran', items=itemsBran)"></div>
+
+
+
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
     <div th:each="attraction : ${attractions}">
         <div id="carouselExampleIndicators-bran" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
