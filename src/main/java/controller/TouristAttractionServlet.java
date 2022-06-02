@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @WebServlet(name = "touristAttractionServlet", urlPatterns = {"/"}, loadOnStartup = 1)
 public class TouristAttractionServlet extends HttpServlet {
@@ -30,7 +31,7 @@ public class TouristAttractionServlet extends HttpServlet {
         WebContext webContext = new WebContext(req, resp, req.getServletContext());
 
         ApplicationService applicationService = ApplicationService.getInstance();
-        TouristAttraction touristAttraction = applicationService.touristAttractionDao.get(1);
+        List<TouristAttraction> touristAttractions = applicationService.touristAttractionDao.getAll();
 
         String[] itemsBran = new String[6];
         itemsBran[0] = "../static/img/bran_castle/bran1.jpg";
@@ -40,10 +41,10 @@ public class TouristAttractionServlet extends HttpServlet {
         itemsBran[4] = "../static/img/bran_castle/bran5.jpg";
         itemsBran[5] = "../static/img/bran_castle/bran6.jpg";
 
-        webContext.setVariable("touristAttraction", touristAttraction);
+        webContext.setVariable("touristAttractions", touristAttractions);
         webContext.setVariable("itemsBran", itemsBran);
         webContext.setVariable("branid", "bran");
-        templateEngine.process("carousel_template.html", webContext, resp.getWriter());
+        templateEngine.process("index.html", webContext, resp.getWriter());
 
 
     }
