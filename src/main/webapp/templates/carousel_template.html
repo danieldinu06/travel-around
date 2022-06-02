@@ -1,62 +1,56 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
-
-<body>
 <div th:fragment="carousel(id, items)">
-  <div
-          id="#${id}"
-          class="carousel slide mb-3"
-          data-bs-ride="carousel"
-  >
-    <div class="carousel-indicators">
-      <div th:each="nada, index : ${items}">
-
-      <button type="button"
-              th:attr="class=${index === 0 ? 'active' : ''}
-              data-bs-target='#${id}'
-              data-bs-slide-to='${index}'
-              aria-current=${index === 0 ? 'true' : ''}"
-              aria-label="Slide ${index + 1}"></button>
-      </div>
-
-    </div>
-    <div class="carousel-inner">
-      <div
-              th:each="pic, index : ${items}"
-              th:attr="class=${index === 0 ? 'carousel-item active' : 'carousel-item'}"
-      >
-        <img
-                th:attr="src=${pic}"
-                class="d-block w-100 img-fluid img-thumbnail"
-                alt="..."
-        />
-      </div>
-    </div>
-    <button
-            class="carousel-control-prev"
-            type="button"
-            th:attr="data-bs-target='#${id}'"
-            data-bs-slide="prev"
+    <div
+            id="#${id}"
+            class="carousel slide mb-3"
+            data-bs-ride="carousel"
     >
+        <div class="carousel-indicators">
+            <div th:each="nada, index : ${items}">
+
+                <button type="button"
+                        th:class="(${index} == 0 ? 'active' : '')"
+                        data-bs-target='#${id}'
+                        data-bs-slide-to='${index}'
+                        th:attr="aria-current=(${index} == 0 ? 'true' : '')"
+                        aria-label="|Slide ${index + 1}|"></button>
+            </div>
+        </div>
+        <div class="carousel-inner">
+            <div
+                    th:each="pic, index : ${items}"
+                    th:attr="class=(${index} == 0 ? 'carousel-item active' : 'carousel-item')"
+            >
+                <img
+                        th:attr="src=${pic}"
+                        class="d-block w-100 img-fluid img-thumbnail"
+                        alt="..."
+                />
+            </div>
+        </div>
+        <button
+                class="carousel-control-prev"
+                type="button"
+                th:attr="data-bs-target='#${id}'"
+                data-bs-slide="prev"
+        >
                     <span
                             class="carousel-control-prev-icon"
                             aria-hidden="true"
                     ></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button
-            class="carousel-control-next"
-            type="button"
-            th:attr="data-bs-target='#${id}'"
-            data-bs-slide="next"
-    >
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+                class="carousel-control-next"
+                type="button"
+                th:attr="data-bs-target='#${id}'"
+                data-bs-slide="next"
+        >
                     <span
                             class="carousel-control-next-icon"
                             aria-hidden="true"
                     ></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 </div>
-</body>
-</html>
