@@ -7,6 +7,7 @@ target/
 node_modules/
 package.json
 package-lock.json
+src/main/webapp/node_modules/
 src/main/webapp/templates/.idea
 src/main/webapp/templates/node_modules/
 src/main/webapp/templates/package.json
