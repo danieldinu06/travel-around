@@ -52,5 +52,11 @@
             <i class='bx bx-menu' ></i>
             <span class="text">Menu</span>
         </div>
+        <div class="header text-center">
+            <h1>Tourist Attractions</h1>
+        </div>
+        <div class="container">
+            <div th:insert="carousel_template.html :: carousel(id='carouselExampleIndicators-bran', items=itemsBran)"></div>
+        </div>
     </section>
 </div>
