@@ -30,9 +30,44 @@ public class TouristAttractionDaoJDBC implements TouristAttractionDao {
             resultSet.next();
             touristAttraction.setId(resultSet.getInt(1));
 
+            addImages(touristAttraction.getId(), touristAttraction.getImages());
         }
         catch (SQLException e) {
             throw new RuntimeException("Error while adding new Tourist Attractions");
+        }
+    }
+
+    public void addImages(Integer touristAttractionId, List<String> images) {
+        try (Connection connection = dataSource.getConnection()) {
+            for (String image: images) {
+                String sql = "INSERT INTO tourist_attraction_images (image) VALUES(?)";
+                PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+                statement.setString(1, image);
+                statement.executeUpdate();
+
+                ResultSet resultSet = statement.getGeneratedKeys();
+                resultSet.next();
+
+                int firstIndex = resultSet.getInt(1);
+
+                connectImages(touristAttractionId, firstIndex);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error while getting TouristAttraction Images.");
+        }
+    }
+
+    public void connectImages(Integer touristAttractionId, int index) {
+        try (Connection connection = dataSource.getConnection()) {
+            String sql = "INSERT INTO ta_i_seq (t_attraction_id, ta_image_id) VALUES (?, ?)";
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            statement.setInt(1, touristAttractionId);
+            statement.setInt(2, index);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error while getting TouristAttraction Images.");
         }
     }
 
@@ -150,7 +185,7 @@ public class TouristAttractionDaoJDBC implements TouristAttractionDao {
             return result;
 
         } catch (SQLException e) {
-            throw new RuntimeException("Error while getting TouristAttraction.");
+            throw new RuntimeException("Error while getting TouristAttraction Images.");
         }
     }
 
