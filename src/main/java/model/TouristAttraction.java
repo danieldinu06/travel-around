@@ -72,4 +72,12 @@ public class TouristAttraction {
     public List<Restaurant> getRestaurants() {
         return restaurants;
     }
+
+    public void addHotel(Hotel hotel) {
+        this.hotels.add(hotel);
+    }
+
+    public void addRestaurant(Restaurant restaurant) {
+        this.restaurants.add(restaurant);
+    }
 }
