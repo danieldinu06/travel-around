@@ -40,13 +40,13 @@ public class Initializer implements ServletContextListener {
 
 
         for (int i = 1; i <= 5; i++) {
-            attractionImages.add(String.format("../../webapp/static/img/bran_castle/attraction/bran%d.jpg", i));
+            attractionImages.add(String.format("../../static/img/bran_castle/attraction/bran%d.jpg", i));
 
-            conaculBratescu.addImage(String.format("../../webapp/static/img/bran_castle/hotels/1/hotel%d.jpg", i));
-            casaMedievala.addImage(String.format("../../webapp/static/img/bran_castle/hotels/2/hotel%d.jpg", i));
+            conaculBratescu.addImage(String.format("../../static/img/bran_castle/hotels/1/hotel%d.jpg", i));
+            casaMedievala.addImage(String.format("../../static/img/bran_castle/hotels/2/hotel%d.jpg", i));
 
-            torzburg.addImage(String.format("../../webapp/static/img/bran_castle/restaurants/1/restaurant%d.jpg", i));
-            trattoriaAlGallo.addImage(String.format("../../webapp/static/img/bran_castle/restaurants/2/restaurant%d.jpg", i));
+            torzburg.addImage(String.format("../../static/img/bran_castle/restaurants/1/restaurant%d.jpg", i));
+            trattoriaAlGallo.addImage(String.format("../../static/img/bran_castle/restaurants/2/restaurant%d.jpg", i));
         }
 
         branCastle.setImages(attractionImages);
