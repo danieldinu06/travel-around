@@ -15,6 +15,7 @@ public class Hotel {
     private int rooms_number;
 
     private List<Room> rooms;
+    private List<String> images;
 
     private TouristAttraction touristAttraction;
 
@@ -25,6 +26,15 @@ public class Hotel {
         this.rooms_number = rooms_number;
         this.touristAttraction = touristAttraction;
         this.rooms = new ArrayList<>();
+        this.images = new ArrayList<>();
+    }
+
+    public List<String> getImages() {
+        return images;
+    }
+
+    public void addImage(String image) {
+        this.images.add(image);
     }
 
     public Integer getId() {
