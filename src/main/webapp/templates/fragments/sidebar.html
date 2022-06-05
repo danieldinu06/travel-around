@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<div th:fragment="sidebar">
+<div th:fragment="sidebar(items)">
     <div class="sidebar close">
         <div class="logo-details">
             <i class='bx bxs-plane-alt' style='color:#fbf8f8'></i>
@@ -56,7 +56,7 @@
             <h1>Tourist Attractions</h1>
         </div>
         <div class="container">
-            <div th:insert="carousel_template.html :: carousel(id='carouselExampleIndicators-bran', items=itemsBran)"></div>
+            <div th:insert="carousel_template.html :: carousel(id='carouselExampleIndicators-bran', items=${items})"></div>
         </div>
     </section>
 </div>

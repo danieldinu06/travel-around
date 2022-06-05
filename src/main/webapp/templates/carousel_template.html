@@ -22,7 +22,7 @@
                     th:attr="class=(${index} == 0 ? 'carousel-item active' : 'carousel-item')"
             >
                 <img
-                        th:attr="src=${pic}"
+                        th:src="@{${pic}}"
                         class="d-block w-100 img-fluid img-thumbnail"
                         alt="..."
                 />
