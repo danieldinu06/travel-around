@@ -3,6 +3,11 @@
     flex-direction: row;
 }
 
+.carousel-description {
+    position: relative;
+    float: right;
+
+}
 
 .d-block {
     width: 564px;
