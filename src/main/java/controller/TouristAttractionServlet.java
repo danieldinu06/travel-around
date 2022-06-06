@@ -34,6 +34,7 @@ public class TouristAttractionServlet extends HttpServlet {
         List<TouristAttraction> touristAttractions = applicationService.touristAttractionDao.getAll();
 
         webContext.setVariable("touristAttractions", touristAttractions);
+        webContext.setVariable("username", "Daniel");
         templateEngine.process("index.html", webContext, resp.getWriter());
     }
 }
