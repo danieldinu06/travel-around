@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<div th:fragment="carousel(id, attractions)">
+<div th:fragment="carousel">
     <div id="carouselExampleIndicators-bran" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators-bran" data-slide-to="0" class="active"></li>
@@ -8,17 +8,27 @@
             <li data-target="#carouselExampleIndicators-bran" data-slide-to="3"></li>
             <li data-target="#carouselExampleIndicators-bran" data-slide-to="4"></li>
         </ol>
-        <div class="carousel-inner">
+        <div
+                class="carousel-inner"
+                th:each="touristAttraction : ${touristAttractions}"
+        >
             <div
-                    th:each="pic, index : ${items}"
-                    th:attr="class=(${index} == 0 ? 'carousel-item active' : 'carousel-item')"
+                    th:each="image, index : ${touristAttraction.getImages()}"
+                    th:class="${index.index} == 0 ? 'carousel-item active' : 'carousel-item'"
             >
                 <img
-                        th:src="@{${pic}}"
+                        th:src="@{${image}}"
                         class="d-block img-fluid img-thumbnail"
                         alt="..."
                 />
             </div>
+            <div
+                    class="carousel-description"
+                    th:each="touristAttraction: ${touristAttractions}"
+            >
+                <p th:text="${touristAttraction.getName()}">Description</p>
+            </div>
+
             <a class="carousel-control-prev" href="#carouselExampleIndicators-bran" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             </a>

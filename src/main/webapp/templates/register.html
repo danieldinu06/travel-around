@@ -11,7 +11,7 @@
     <body>
         <div class="center">
             <h2>Register</h2>
-            <form method="post">
+            <form method="post" action="register">
                 <div class="txt_field">
                     <input type="text" id="uname" required="">
                     <span></span>
@@ -27,16 +27,6 @@
                     <label for="psw-conf"><b>Confirm password</b></label>
                 </div>
                 <input type="submit" value="Sign Up" style="margin: 30px 0;">
-                <!--    <div class="invalid">-->
-                <!--      {% with messages = get_flashed_messages() %}-->
-                <!--      {% if messages %}-->
-                <!--      {% for message in messages %}-->
-                <!--      <p>{{ message }}-->
-                <!--      <p>-->
-                <!--        {% endfor %}-->
-                <!--        {% endif %}-->
-                <!--        {% endwith %}-->
-                <!--    </div>-->
             </form>
         </div>
     </body>
