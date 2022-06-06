@@ -44,6 +44,6 @@ public class RegisterServlet extends HttpServlet {
         applicationService.userDao.add(user);
 
         PrintWriter writer = response.getWriter();
-        writer.println("login.html");
+        writer.println("register.html");
     }
 }

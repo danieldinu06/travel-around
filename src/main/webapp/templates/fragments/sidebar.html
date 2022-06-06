@@ -16,6 +16,12 @@
                 </ul>
             </li>
             <li>
+                <a href="LoginServlet">
+                    <i class='bx bx-broadcast'></i>
+                    <span class="link_name">Login</span>
+                </a>
+            </li>
+            <li>
                 <a href="#">
                     <i class='bx bx-compass' ></i>
                     <span class="link_name">Explore Tourist Attractions</span>
@@ -41,7 +47,10 @@
                     <div class="name-job">
                         <div class="profile_name" th:text="${username}">Username</div>
                     </div>
-                    <i class='bx bx-log-out' ></i>
+                    <a href="LogoutServlet">
+                        <i class='bx bx-log-out' >
+                        </i>
+                    </a>
                 </div>
             </li>
         </ul>

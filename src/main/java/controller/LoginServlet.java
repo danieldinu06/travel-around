@@ -31,6 +31,9 @@ public class LoginServlet extends HttpServlet {
 
         System.out.println(user.getName());
 
+        PrintWriter writer = response.getWriter();
+        writer.println("login.html");
 
     }
+
 }
