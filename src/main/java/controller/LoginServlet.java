@@ -27,30 +27,9 @@ public class LoginServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        String name = request.getParameter("name");
-        String password = Encrypt.encode(request.getParameter("password"));
-        String phoneNumber = request.getParameter("phone_number");
-        String billingAddress = request.getParameter("billing_address");
-        UserStatus userStatus = UserStatus.valueOf(request.getParameter("user_status"));
+        user = (User) httpSession.getAttribute("user");
 
-        user = new User(name, password, phoneNumber, billingAddress, userStatus);
-        if(userStatus.equals(false)) {
-            httpSession = request.getSession(true);
-            httpSession.setAttribute("user", user);
-        }
-        else {
-            PrintWriter out = response.getWriter();
-            out.println("  ");
-        }
-
-
-
-
-
-        ApplicationService applicationService = ApplicationService.getInstance();
-        applicationService.userDao.add(user);
-
-        response.sendRedirect(request.getContextPath() + "/third");
+        System.out.println(user.getName());
 
 
     }
