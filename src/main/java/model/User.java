@@ -18,6 +18,7 @@ public class User {
         this.status = status;
     }
 
+
     public Integer getId() {
         return id;
     }
