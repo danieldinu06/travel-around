@@ -1,5 +1,10 @@
 package controller;
 
+import config.TemplateEngineUtil;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.WebContext;
+import service.ApplicationService;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +15,19 @@ import java.io.PrintWriter;
 
 public class LogoutServlet extends HttpServlet {
 
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
+    }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        TemplateEngine templateEngine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
+        WebContext webContext = new WebContext(request, response, request.getServletContext());
+
+        ApplicationService applicationService = ApplicationService.getInstance();
+
 
         response.setContentType("text/html");
 
@@ -21,8 +38,10 @@ public class LogoutServlet extends HttpServlet {
 
         session.invalidate();
 
-        out.print("Logged out!");
-        out.close();
+
+
+        templateEngine.process("logout.html", webContext, response.getWriter());
+        //out.println("logout/html");
 
     }
 
