@@ -40,7 +40,6 @@
                     </div>
                     <div class="name-job">
                         <div class="profile_name" th:text="${username}">Username</div>
-<!--                        <div class="job">Web Desginer</div>-->
                     </div>
                     <i class='bx bx-log-out' ></i>
                 </div>
@@ -52,11 +51,9 @@
             <i class='bx bx-menu' ></i>
             <span class="text">Menu</span>
         </div>
-        <div class="header text-center">
-            <h1>Tourist Attractions</h1>
+        <div class="header">
+            <h3>Tourist Attractions</h3>
         </div>
-        <div class="container">
-            <div th:insert="carousel_template.html :: carousel"></div>
-        </div>
+        <div th:replace="carousel_template.html :: carousel" class="tourist-attractions"></div>
     </section>
 </div>

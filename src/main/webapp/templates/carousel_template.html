@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<div th:fragment="carousel">
+<div th:fragment="carousel" th:class="container">
     <div id="carouselExampleIndicators-bran" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators-bran" data-slide-to="0" class="active"></li>
@@ -22,12 +22,6 @@
                         alt="..."
                 />
             </div>
-            <div
-                    class="carousel-description"
-                    th:each="touristAttraction: ${touristAttractions}"
-            >
-                <p th:text="${touristAttraction.getName()}">Description</p>
-            </div>
 
             <a class="carousel-control-prev" href="#carouselExampleIndicators-bran" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -35,6 +29,25 @@
             <a class="carousel-control-next" href="#carouselExampleIndicators-bran" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
             </a>
+        </div>
+    </div>
+    <div
+            class="carousel-review"
+            th:each="touristAttraction: ${touristAttractions}"
+    >
+        <a th:text="${touristAttraction.getName()}" class="mb-0" href="#">Name</a>
+
+        <div class="wrapper">
+            <input type="radio" name="rate" id="rate5" checked>
+            <label for="rate5"></label>
+            <input type="radio" name="rate" id="rate4">
+            <label for="rate4"></label>
+            <input type="radio" name="rate" id="rate3">
+            <label for="rate3"></label>
+            <input type="radio" name="rate" id="rate2">
+            <label for="rate2"></label>
+            <input type="radio" name="rate" id="rate1">
+            <label for="rate1"></label>
         </div>
     </div>
 </div>
