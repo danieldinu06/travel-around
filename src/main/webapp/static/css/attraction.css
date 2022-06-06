@@ -1,15 +1,42 @@
-.container {
-    display: flex;
-    flex-direction: row;
+.header {
+    padding: 25px 0 25px 12px;
+    float: left;
 }
 
-.carousel-description {
-    position: relative;
-    float: right;
+.home-section {
+    background-color: #ffffff;
+}
 
+.home-content {
+    border-bottom: 1px solid black;
+}
+
+.container {
+    padding-right: 0;
+    float: left;
+    clear: left;
+}
+
+.carousel-review {
+    border-radius: 10px;
+    width: 420px;
+    height: 100px;
+    line-height: 50px;
+    text-align: left;
 }
 
 .d-block {
-    width: 564px;
-    height: 564px;
+    width: 100%;
+    height: 100%;
+}
+
+[id^="carouselExampleIndicators-"] {
+    max-width: 420px;
+    max-height: 420px;
+    margin-right: 0;
+}
+
+.tourist-attractions {
+    display: flex;
+    flex-wrap: wrap;
 }

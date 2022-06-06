@@ -1,0 +1,38 @@
+.wrapper {
+    position: absolute;
+    display: flex;
+    line-height: 20px;
+}
+
+.wrapper input {
+    display: none;
+}
+
+.wrapper label {
+    display: block;
+    cursor: pointer;
+    width: 30px;
+}
+
+.wrapper label:before {
+    content: '★';
+    position: relative;
+    display: block;
+    font-size: 30px;
+    color: black;
+}
+
+.wrapper label:after {
+    content: '★';
+    position: absolute;
+    display: block;
+    font-size: 30px;
+    color: gold;
+    top: 0;
+    opacity: 0;
+    transition: .6s;
+}
+
+.wrapper label:hover:after, .wrapper label:hover~label:after, .wrapper input:checked~label:after {
+    opacity: 1;
+}
