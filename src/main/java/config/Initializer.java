@@ -25,7 +25,14 @@ public class Initializer implements ServletContextListener {
 
         List<String> attractionImages = new ArrayList<>();
 
-        TouristAttraction branCastle = new TouristAttraction("Bran Castle", "", (float)5.0);
+        TouristAttraction branCastle = new TouristAttraction("Bran Castle", "Bran Castle is a slender stronghold with tile roofs erected in the 14th century, located not far from the city of Brasov in Romania. It commands the green hills on the edge of the Little Carpathians, a subrange of the great chain arcing across Romania.\n" +
+                "\n" +
+                "The Bran castle was built in the 14th century, a stronghold to protect the villagers and landowners of the plains beyond the Bucegi Mountains, although it is most famous for being the location of the famous vampire, Dracula.\n" +
+                "\n" +
+                "\n" +
+                "It is the perfect setting for a vampire-lord. Tall, turreted, red-roofed, with a massive guard tower, it has thick walls with narrow openings for archers and cannons, iron grates over the portals, and secret passageways.\n" +
+                "\n" +
+                "The Bran castle had to be mended and refurbished over centuries of struggle with the Ottoman Empire. Once the two spacious inner courtyards had been flower gardens, and the white-washed walls of the high-ceilinged rooms had been covered with brilliant-hued carpets from the northern reaches of Moldavia.", (float)5.0);
 
         Hotel conaculBratescu = new Hotel("Conacul Bratescu", "", (float)4.3, 30, branCastle);
         Hotel casaMedievala = new Hotel("Pensiunea Casa Medievala", "", (float)4.6, 25, branCastle);
