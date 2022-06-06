@@ -3,12 +3,8 @@
     flex-direction: row;
 }
 
-[id^="carouselExampleIndicators-"] {
-    width: auto;
-    height: 300px;
-    max-height: 300px;
-}
 
 .d-block {
-    height: 300px;
+    width: 564px;
+    height: 564px;
 }
