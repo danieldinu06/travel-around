@@ -1,21 +1,13 @@
 <!DOCTYPE html>
-<div th:fragment="carousel(id, items)">
-    <div
-            id="#${id}"
-            class="carousel slide mb-3"
-            data-bs-ride="carousel"
-    >
-        <div class="carousel-indicators">
-            <div th:each="nada, index : ${items}">
-
-                <button type="button"
-                        th:class="(${index} == 0 ? 'active' : '')"
-                        data-bs-target='#${id}'
-                        data-bs-slide-to='${index}'
-                        th:attr="aria-current=(${index} == 0 ? 'true' : '')"
-                        aria-label="|Slide ${index + 1}|"></button>
-            </div>
-        </div>
+<div th:fragment="carousel(id, attractions)">
+    <div id="carouselExampleIndicators-bran" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators-bran" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators-bran" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators-bran" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators-bran" data-slide-to="3"></li>
+            <li data-target="#carouselExampleIndicators-bran" data-slide-to="4"></li>
+        </ol>
         <div class="carousel-inner">
             <div
                     th:each="pic, index : ${items}"
@@ -23,34 +15,16 @@
             >
                 <img
                         th:src="@{${pic}}"
-                        class="d-block w-100 img-fluid img-thumbnail"
+                        class="d-block img-fluid img-thumbnail"
                         alt="..."
                 />
             </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators-bran" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators-bran" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
         </div>
-        <button
-                class="carousel-control-prev"
-                type="button"
-                th:attr="data-bs-target='#${id}'"
-                data-bs-slide="prev"
-        >
-                    <span
-                            class="carousel-control-prev-icon"
-                            aria-hidden="true"
-                    ></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-                class="carousel-control-next"
-                type="button"
-                th:attr="data-bs-target='#${id}'"
-                data-bs-slide="next"
-        >
-                    <span
-                            class="carousel-control-next-icon"
-                            aria-hidden="true"
-                    ></span>
-            <span class="visually-hidden">Next</span>
-        </button>
     </div>
 </div>
