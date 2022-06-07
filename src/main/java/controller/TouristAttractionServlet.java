@@ -44,7 +44,9 @@ public class TouristAttractionServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/login");
 
         webContext.setVariable("touristAttractions", touristAttractions);
-        webContext.setVariable("username", user.getName());
+        if (user != null) {
+            webContext.setVariable("username", user.getName());
+        }
         templateEngine.process("index.html", webContext, response.getWriter());
     }
 }
