@@ -1,10 +1,7 @@
 package controller;
 
-import config.TemplateEngineUtil;
 import model.User;
 import model.utils.UserStatus;
-import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.context.WebContext;
 import service.ApplicationService;
 
 import javax.servlet.annotation.WebServlet;
