@@ -138,6 +138,12 @@ CREATE TABLE restaurants
     rating              FLOAT
 );
 
+CREATE TYPE USER_STATUS AS ENUM
+(
+    'SIGNED_IN',
+    'SIGNED_OUT'
+);
+
 CREATE TABLE users
 (
     id                  SERIAL NOT NULL,
@@ -145,7 +151,7 @@ CREATE TABLE users
     password            VARCHAR,
     phone_number        VARCHAR,
     billing_address     VARCHAR,
-    user_status         VARCHAR
+    user_status         USER_STATUS
 );
 
 ---
