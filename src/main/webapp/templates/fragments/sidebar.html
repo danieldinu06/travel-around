@@ -61,8 +61,14 @@
             <span class="text">Menu</span>
         </div>
         <div class="header">
-            <h3>Tourist Attractions</h3>
+            <h3 th:text="${touristAttraction != null} ? ${touristAttraction.getName()} : 'Tourist Attractions'">Tourist Attractions</h3>
         </div>
-        <div th:replace="carousel_template.html :: carousel" class="tourist-attractions"></div>
+        <th:block th:if="${touristAttraction == null}">
+            <div class="tourist-attractions" th:replace="carousel_template.html :: carousel"></div>
+        </th:block>
+
+<!--        <th:block th:if="${touristAttraction != null}">-->
+<!--            <div class="tourist-attractions" th:replace="carousel_template.html :: carousel"></div>-->
+<!--        </th:block>-->
     </section>
 </div>

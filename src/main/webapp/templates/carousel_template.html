@@ -35,7 +35,7 @@
             class="carousel-review"
             th:each="touristAttraction: ${touristAttractions}"
     >
-        <a th:text="${touristAttraction.getName()}" class="mb-0" href="#">Name</a>
+        <a th:text="${touristAttraction.getName()}" class="mb-0" th:href="@{'/id/' + ${touristAttraction.getId()}}">Name</a>
 
         <div class="wrapper">
             <input type="radio" name="rate" id="rate5" checked>
