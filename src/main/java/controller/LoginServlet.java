@@ -1,9 +1,12 @@
 package controller;
 
 
+import config.TemplateEngineUtil;
 import model.User;
 import model.utils.Encrypt;
 import model.utils.UserStatus;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.WebContext;
 import service.ApplicationService;
 
 import javax.servlet.annotation.WebServlet;
@@ -21,18 +24,12 @@ public class LoginServlet extends HttpServlet {
 
     HttpSession httpSession;
 
-    private void setData(HttpServletRequest request, HttpServletResponse response) {
-        httpSession = request.getSession();
-    }
-
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        user = (User) httpSession.getAttribute("user");
+        TemplateEngine templateEngine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
+        WebContext webContext = new WebContext(request, response, request.getServletContext());
 
-        System.out.println(user.getName());
-
-        PrintWriter writer = response.getWriter();
-        writer.println("login.html");
+        templateEngine.process("login.html", webContext, response.getWriter());
 
     }
 
