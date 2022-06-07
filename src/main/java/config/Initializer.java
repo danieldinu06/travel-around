@@ -34,6 +34,8 @@ public class Initializer implements ServletContextListener {
                 "\n" +
                 "The Bran castle had to be mended and refurbished over centuries of struggle with the Ottoman Empire. Once the two spacious inner courtyards had been flower gardens, and the white-washed walls of the high-ceilinged rooms had been covered with brilliant-hued carpets from the northern reaches of Moldavia.", (float)5.0);
 
+        branCastle.setUrl("http://www.castelulbran.ro");
+
         Hotel conaculBratescu = new Hotel("Conacul Bratescu", "", (float)4.3, 30, branCastle);
         Hotel casaMedievala = new Hotel("Pensiunea Casa Medievala", "", (float)4.6, 25, branCastle);
 
