@@ -24,13 +24,35 @@ public class LoginServlet extends HttpServlet {
 
     HttpSession httpSession;
 
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        httpSession = request.getSession(true);
+        if (httpSession.getAttribute("user") != null) response.sendRedirect("/");
 
         TemplateEngine templateEngine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
         WebContext webContext = new WebContext(request, response, request.getServletContext());
 
         templateEngine.process("login.html", webContext, response.getWriter());
-
     }
 
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String name = request.getParameter("name");
+        String password = Encrypt.encode(request.getParameter("password"));
+
+        ApplicationService applicationService = ApplicationService.getInstance();
+        user = applicationService.userDao.get(name);
+
+        if (user == null)
+            response.sendRedirect(request.getContextPath() + "/login");
+
+        if (!Encrypt.decode(password).equals(Encrypt.decode(user.getPassword())))
+            response.sendRedirect(request.getContextPath() + "/login");
+
+        applicationService.userDao.updateUserStatus(user);
+        httpSession = request.getSession(true);
+        httpSession.setAttribute("user", user);
+
+        doGet(request, response);
+    }
 }

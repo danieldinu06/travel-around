@@ -29,6 +29,11 @@ public class RegisterServlet extends HttpServlet {
         TemplateEngine templateEngine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
         WebContext webContext = new WebContext(request, response, request.getServletContext());
 
+        httpSession  = request.getSession(true);
+        if ((User) httpSession.getAttribute("user") != null) {
+            response.sendRedirect(request.getContextPath() + "/");
+        }
+
         templateEngine.process("register.html", webContext, response.getWriter());
     }
 
@@ -53,7 +58,6 @@ public class RegisterServlet extends HttpServlet {
 
         httpSession = request.getSession(true);
         httpSession.setAttribute("user", user);
-
         applicationService.userDao.add(user);
 
         response.sendRedirect(request.getContextPath() + "/");
