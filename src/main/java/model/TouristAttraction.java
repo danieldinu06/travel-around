@@ -5,16 +5,12 @@ import java.util.List;
 
 public class TouristAttraction {
     private Integer id;
-
     private String name;
-
     private String description;
-
     private float rating;
+    private String url;
     private List<String> images;
-
     private List<Hotel> hotels;
-
     private List<Restaurant> restaurants;
 
     public TouristAttraction(String name, String description, float rating) {
@@ -23,6 +19,14 @@ public class TouristAttraction {
         this.rating = rating;
         this.hotels = new ArrayList<>();
         this.restaurants = new ArrayList<>();
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public List<String> getImages() {
