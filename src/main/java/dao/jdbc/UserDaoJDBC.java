@@ -17,14 +17,15 @@ public class UserDaoJDBC implements UserDao {
     @Override
     public void add(User user) {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "INSERT INTO users (name, password, phone_number, billing_address, user_status) VALUES (?, ?, ?, ?, ?::USER_STATUS)";
+            String sql = "INSERT INTO users (name, email, password, phone_number, billing_address, user_status) VALUES (?, ?, ?, ?, ?, ?::USER_STATUS)";
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             statement.setString(1, user.getName());
-            statement.setString(2, user.getPassword());
-            statement.setString(3, user.getPhoneNumber());
-            statement.setString(4, user.getBillingAddress());
-            statement.setString(5, user.getStatus().toString());
+            statement.setString(2, user.getEmail());
+            statement.setString(3, user.getPassword());
+            statement.setString(4, user.getPhoneNumber());
+            statement.setString(5, user.getBillingAddress());
+            statement.setString(6, user.getStatus().toString());
 
             statement.executeUpdate();
 
@@ -63,7 +64,7 @@ public class UserDaoJDBC implements UserDao {
     public User get(String name) {
         try (Connection connection = dataSource.getConnection()) {
 
-            String sql = "SELECT id, name, password, phone_number, billing_address, user_status FROM users WHERE name = ?";
+            String sql = "SELECT id, name, email, password, phone_number, billing_address, user_status FROM users WHERE name = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
 
             statement.setString(1, name);
@@ -71,12 +72,13 @@ public class UserDaoJDBC implements UserDao {
 
             if(!resultSet.next()) return null;
 
-            String password = resultSet.getString(3);
-            String phoneNumber = resultSet.getString(4);
-            String billingAddress = resultSet.getString(5);
-            UserStatus userStatus = UserStatus.valueOf(resultSet.getString(6));
+            String email = resultSet.getString(3);
+            String password = resultSet.getString(4);
+            String phoneNumber = resultSet.getString(5);
+            String billingAddress = resultSet.getString(6);
+            UserStatus userStatus = UserStatus.valueOf(resultSet.getString(7));
 
-            User user = new User(name, password, phoneNumber, billingAddress, userStatus);
+            User user = new User(name, email, password, phoneNumber, billingAddress, userStatus);
             user.setId(resultSet.getInt(1));
 
             return user;
