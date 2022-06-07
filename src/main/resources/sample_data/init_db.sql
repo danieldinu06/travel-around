@@ -148,6 +148,7 @@ CREATE TABLE users
 (
     id                  SERIAL NOT NULL,
     name                VARCHAR,
+    email               VARCHAR,
     password            VARCHAR,
     phone_number        VARCHAR,
     billing_address     VARCHAR,
