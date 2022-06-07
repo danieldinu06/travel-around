@@ -3,6 +3,7 @@ package controller;
 import config.TemplateEngineUtil;
 import model.TouristAttraction;
 import model.User;
+import model.utils.Encrypt;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import service.ApplicationService;
@@ -38,6 +39,9 @@ public class TouristAttractionServlet extends HttpServlet {
 
         httpSession = request.getSession(true);
         User user = (User) httpSession.getAttribute("user");
+
+        if (user == null)
+            response.sendRedirect(request.getContextPath() + "/login");
 
         webContext.setVariable("touristAttractions", touristAttractions);
         webContext.setVariable("username", user.getName());
