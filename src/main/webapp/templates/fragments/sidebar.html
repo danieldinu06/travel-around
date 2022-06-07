@@ -16,18 +16,12 @@
                 </ul>
             </li>
             <li>
-                <a href="LoginServlet">
-                    <i class='bx bx-broadcast'></i>
-                    <span class="link_name">Login</span>
-                </a>
-            </li>
-            <li>
                 <a href="#">
                     <i class='bx bx-compass' ></i>
-                    <span class="link_name">Explore Tourist Attractions</span>
+                    <span class="link_name">Tourist Attractions</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Explore Tourist Attractions</a></li>
+                    <li><a class="link_name" href="/">Tourist Attractions</a></li>
                 </ul>
             </li>
             <li>
@@ -40,11 +34,17 @@
                 </ul>
             </li>
             <li>
+                <a href="/profile">
+                    <i class='bx bx-user-circle'></i>
+                    <span class="link_name">Profile</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a href="/profile" class="link_name">Profile</a></li>
+                </ul>
+            </li>
+            <li>
                 <div class="profile-details">
-                    <div class="profile-content">
-                        <img src="" alt="Profile">
-                    </div>
-                    <div class="name-job">
+                    <div class="name-job" style="margin: 0 auto 0 auto">
                         <div class="profile_name" th:text="${username}">Username</div>
                     </div>
                     <a href="/logout">
