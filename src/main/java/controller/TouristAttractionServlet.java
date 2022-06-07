@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Arrays;
 
 @WebServlet(urlPatterns = {"/id/*"})
 public class TouristAttractionServlet extends HttpServlet {
@@ -38,6 +37,6 @@ public class TouristAttractionServlet extends HttpServlet {
         if (user != null) {
             webContext.setVariable("username", user.getName());
         }
-        templateEngine.process("tourist_attraction.html", webContext, response.getWriter());
+        templateEngine.process("index.html", webContext, response.getWriter());
     }
 }
