@@ -16,7 +16,7 @@
                 </ul>
             </li>
             <li>
-                <a href="#">
+                <a href="/">
                     <i class='bx bx-compass' ></i>
                     <span class="link_name">Tourist Attractions</span>
                 </a>
@@ -60,15 +60,15 @@
             <i class='bx bx-menu' ></i>
             <span class="text">Menu</span>
         </div>
-        <div class="header">
+        <div th:class="${touristAttraction != null} ? 'header pb-0' : 'header'">
             <h3 th:text="${touristAttraction != null} ? ${touristAttraction.getName()} : 'Tourist Attractions'">Tourist Attractions</h3>
         </div>
         <th:block th:if="${touristAttraction == null}">
             <div class="tourist-attractions" th:replace="carousel_template.html :: carousel"></div>
         </th:block>
 
-<!--        <th:block th:if="${touristAttraction != null}">-->
-<!--            <div class="tourist-attractions" th:replace="carousel_template.html :: carousel"></div>-->
-<!--        </th:block>-->
+        <th:block th:if="${touristAttraction != null}">
+            <div class="tourist-attraction" th:replace="tourist_attraction.html :: tourist_attraction"></div>
+        </th:block>
     </section>
 </div>
