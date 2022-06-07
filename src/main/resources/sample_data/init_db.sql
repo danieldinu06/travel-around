@@ -30,7 +30,8 @@ CREATE TABLE tourist_attractions
     id                  SERIAL NOT NULL,
     name                VARCHAR,
     description         VARCHAR,
-    rating              FLOAT
+    rating              FLOAT,
+    url                 VARCHAR
 );
 
 CREATE TABLE ta_i_seq
