@@ -40,3 +40,24 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+    background-color: #adadad;
+    color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 25px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    opacity: 1;
+}
+
+.carousel-control-next-icon {
+    background-image: url('../img/right.png');
+}
+
+.carousel-control-prev-icon {
+    background-image: url('../img/left.png');
+}
