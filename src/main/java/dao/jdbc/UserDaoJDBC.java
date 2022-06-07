@@ -24,7 +24,7 @@ public class UserDaoJDBC implements UserDao {
             statement.setString(2, user.getPassword());
             statement.setString(3, user.getPhoneNumber());
             statement.setString(4, user.getBillingAddress());
-            statement.setString(5, String.valueOf(UserStatus.SIGNED_IN));
+            statement.setString(5, user.getStatus().toString());
 
             statement.executeUpdate();
 
