@@ -1,0 +1,29 @@
+.usefulInfo {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.schedule-btn,
+.website-btn {
+    text-decoration: none;
+    background-color: #ffffff;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.aboutAttraction {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.description {
+    width: 30vw;
+    border: 1px solid #000000;
+    border-radius: 6px;
+}
+
+.description-paragraph {
+    margin: 25px 10px 25px 10px;
+}
