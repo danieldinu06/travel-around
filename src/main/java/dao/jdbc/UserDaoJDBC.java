@@ -39,6 +39,22 @@ public class UserDaoJDBC implements UserDao {
     }
 
     @Override
+    public void updateUserStatus(User user) {
+        try (Connection connection = dataSource.getConnection()) {
+            String sql = "UPDATE users SET user_status = ?::USER_STATUS WHERE name = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.setString(1, user.getStatus().toString());
+            statement.setString(2, user.getName());
+
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error while updating User.");
+        }
+    }
+
+    @Override
     public void remove(User user) {
 
     }
