@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8" />
+        <title th:text="${touristAttraction.getName()}">Tourist Attraction</title>
+        <!-- CSS only -->
+        <link
+                href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+                rel="stylesheet"
+                integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+                crossorigin="anonymous"
+        />
+        <link href="../static/css/bootstrap_sidebar.css" rel="stylesheet" />
+        <link href="../static/css/rating.css" rel="stylesheet" />
+        <link rel="stylesheet" href="../static/css/attraction.css">
+        <!-- Boxiocns CDN Link -->
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+
+    <div th:replace="fragments/sidebar.html :: sidebar"></div>
+
+    <script src="../static/js/sidebar.js"></script>
+    </body>
+</html>
