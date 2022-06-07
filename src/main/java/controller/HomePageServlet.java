@@ -3,7 +3,6 @@ package controller;
 import config.TemplateEngineUtil;
 import model.TouristAttraction;
 import model.User;
-import model.utils.Encrypt;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import service.ApplicationService;
@@ -15,11 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet(name = "touristAttractionServlet", urlPatterns = {"/"}, loadOnStartup = 1)
-public class TouristAttractionServlet extends HttpServlet {
+public class HomePageServlet extends HttpServlet {
     HttpSession httpSession;
 
     @Override
