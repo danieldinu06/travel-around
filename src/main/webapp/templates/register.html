@@ -11,20 +11,28 @@
     <body>
         <div class="center">
             <h2>Register</h2>
-            <form method="post" action="register">
+            <form method="post" action="/register">
                 <div class="txt_field">
-                    <input type="text" id="uname" required="">
+                    <input type="text" id="name" name= "name" required="">
                     <span></span>
-                    <label for="uname"><b>Username</b></label>
+                    <label for="name"><b>Username</b></label>
                 </div>
 
                 <div class="txt_field">
-                    <input type="password" id="psw" required="">
-                    <label for="psw"><b>Password</b></label>
+                    <input type="password" id="password" name="password" required="">
+                    <label for="password"><b>Password</b></label>
                 </div>
                 <div class="txt_field">
-                    <input type="password" id="psw-conf" required="">
+                    <input type="password" id="psw-conf" name="password-conf" required="">
                     <label for="psw-conf"><b>Confirm password</b></label>
+                </div>
+                <div class="txt_field">
+                    <input type="tel" id="phoneNumber" name="phone-number" required="" pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}" placeholder="07xx-xxx-xxx">
+                    <label for="phoneNumber"><b>Phone Number</b></label>
+                </div>
+                <div class="txt_field">
+                    <input type="text" id="billingAddress" name="billing-address" required="">
+                    <label for="billingAddress"><b>Billing Address (Street, Number, City)</b></label>
                 </div>
                 <input type="submit" value="Sign Up" style="margin: 30px 0;">
             </form>
