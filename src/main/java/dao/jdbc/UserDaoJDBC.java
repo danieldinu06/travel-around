@@ -53,8 +53,6 @@ public class UserDaoJDBC implements UserDao {
             statement.setString(1, name);
             ResultSet resultSet = statement.executeQuery();
 
-            System.out.println(resultSet);
-
             if(!resultSet.next()) return null;
 
             String password = resultSet.getString(3);
