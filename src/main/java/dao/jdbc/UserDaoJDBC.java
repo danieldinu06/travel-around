@@ -24,12 +24,13 @@ public class UserDaoJDBC implements UserDao {
             statement.setString(2, user.getPassword());
             statement.setString(3, user.getPhoneNumber());
             statement.setString(4, user.getBillingAddress());
-            statement.setObject(5, UserStatus.SIGNED_IN);
+            statement.setString(5, String.valueOf(UserStatus.SIGNED_IN));
 
             statement.executeUpdate();
 
             ResultSet resultSet = statement.getGeneratedKeys();
             resultSet.next();
+
             user.setId(resultSet.getInt(1));
 
         } catch (SQLException e) {
@@ -46,10 +47,28 @@ public class UserDaoJDBC implements UserDao {
     public User get(String name) {
         try (Connection connection = dataSource.getConnection()) {
 
+            String sql = "SELECT id, name, password, phone_number, billing_address, user_status FROM users WHERE name = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.setString(1, name);
+            ResultSet resultSet = statement.executeQuery();
+
+            System.out.println(resultSet);
+
+            if(!resultSet.next()) return null;
+
+            String password = resultSet.getString(3);
+            String phoneNumber = resultSet.getString(4);
+            String billingAddress = resultSet.getString(5);
+            UserStatus userStatus = UserStatus.valueOf(resultSet.getString(6));
+
+            User user = new User(name, password, phoneNumber, billingAddress, userStatus);
+            user.setId(resultSet.getInt(1));
+
+            return user;
+
         } catch (SQLException e) {
             throw new RuntimeException("Error while getting User.");
         }
-
-        return null;
     }
 }
