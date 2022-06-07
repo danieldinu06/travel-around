@@ -5,19 +5,28 @@ import model.utils.UserStatus;
 public class User {
     private Integer id;
     private String name;
+    private String email;
     private String password;
     private String phoneNumber;
     private String billingAddress;
     private UserStatus status;
 
-    public User(String name, String password, String phoneNumber, String billingAddress, UserStatus status) {
+    public User(String name, String email, String password, String phoneNumber, String billingAddress, UserStatus status) {
         this.name = name;
+        this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.billingAddress = billingAddress;
         this.status = status;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public Integer getId() {
         return id;
