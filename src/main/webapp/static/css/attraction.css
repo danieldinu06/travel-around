@@ -1,4 +1,8 @@
 .container-carousel {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 25px;
 }
 
 .usefulInfo {
@@ -41,23 +45,20 @@
 
 .attractionImages {
     position: relative;
-    height: calc(564px + 30vw);
-    width: calc(564px + 30vw);
-}
-
-.attractionSlides {
-    max-height: 564px;
-    max-width: 564px;
-}
-
-.attractionColumn img {
-    max-height: 112.8px;
-    max-width: 112.8px;
-    float: left;
+    height: 676.8px;
+    width: 564px;
 }
 
 .attractionSlides {
     display: none;
+    max-height: calc(564px + 30vw);
+    max-width: calc(564px + 30vw);
+}
+
+.attractionColumn img {
+    max-height: 112.8px;
+    max-width: 20vw;
+    float: left;
 }
 
 .cursor {
