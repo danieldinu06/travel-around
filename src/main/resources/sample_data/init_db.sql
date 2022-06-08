@@ -19,6 +19,7 @@ DROP TABLE IF EXISTS seats CASCADE;
 DROP TABLE IF EXISTS booked_seats CASCADE;
 DROP TABLE IF EXISTS restaurants CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS attraction_schedule CASCADE;
 DROP TYPE IF EXISTS user_status;
 
 ---
@@ -157,6 +158,17 @@ CREATE TABLE users
     user_status         USER_STATUS
 );
 
+CREATE TABLE attraction_schedule
+(
+    id                  SERIAL NOT NULL,
+    t_attraction_id     SERIAL,
+    monday              VARCHAR,
+    tuesday             VARCHAR,
+    wednesday           VARCHAR,
+    thursday            VARCHAR,
+    friday              VARCHAR
+);
+
 ---
 --- add constraints
 ---
@@ -222,3 +234,7 @@ ALTER TABLE h_i_seq
 ALTER TABLE r_i_seq
     ADD CONSTRAINT fk_r_id FOREIGN KEY (room_id) REFERENCES rooms(id),
     ADD CONSTRAINT fk_r_i_id FOREIGN KEY (room_image_id) REFERENCES room_images(id);
+
+ALTER TABLE attraction_schedule
+    ADD CONSTRAINT pk_id PRIMARY KEY (id),
+    ADD CONSTRAINT fk_ta_id FOREIGN KEY (t_attraction_id) REFERENCES tourist_attractions(id);
