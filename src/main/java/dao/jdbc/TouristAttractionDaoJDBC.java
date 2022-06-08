@@ -135,11 +135,14 @@ public class TouristAttractionDaoJDBC implements TouristAttractionDao {
             String location = resultSet.getString(6);
 
             List<String> images = getImages(resultSet.getInt(1));
+            Map<String, String> schedule = getSchedule(resultSet.getInt(1));
+
             TouristAttraction touristAttraction = new TouristAttraction(name, description, rating);
             touristAttraction.setUrl(url);
             touristAttraction.setId(touristAttractionId);
             touristAttraction.setImages(images);
             touristAttraction.setLocation(location);
+            touristAttraction.setSchedule(schedule);
 
             return touristAttraction;
 
@@ -236,10 +239,10 @@ public class TouristAttractionDaoJDBC implements TouristAttractionDao {
             Map<String, String> result = new HashMap<>();
             while(resultSet.next()) {
                 result.put("monday", resultSet.getString("monday"));
-                result.put("tuesday", resultSet.getString("monday"));
-                result.put("wednesday", resultSet.getString("monday"));
-                result.put("thursday", resultSet.getString("monday"));
-                result.put("friday", resultSet.getString("monday"));
+                result.put("tuesday", resultSet.getString("tuesday"));
+                result.put("wednesday", resultSet.getString("wednesday"));
+                result.put("thursday", resultSet.getString("thursday"));
+                result.put("friday", resultSet.getString("friday"));
             }
 
             return result;
