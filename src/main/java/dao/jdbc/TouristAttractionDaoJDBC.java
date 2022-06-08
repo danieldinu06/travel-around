@@ -35,6 +35,7 @@ public class TouristAttractionDaoJDBC implements TouristAttractionDao {
             touristAttraction.setId(resultSet.getInt(1));
 
             addImages(touristAttraction.getId(), touristAttraction.getImages());
+            addSchedule(touristAttraction);
         }
         catch (SQLException e) {
             throw new RuntimeException("Error while adding new Tourist Attractions");
@@ -200,6 +201,27 @@ public class TouristAttractionDaoJDBC implements TouristAttractionDao {
 
         } catch (SQLException e) {
             throw new RuntimeException("Error while getting TouristAttraction Images.");
+        }
+    }
+
+    public void addSchedule(TouristAttraction touristAttraction) {
+        try (Connection connection = dataSource.getConnection()) {
+            String sql = "INSERT INTO attraction_schedule (t_attraction_id, monday, tuesday, wednesday, thursday, friday) " +
+                    "VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.setInt(1, touristAttraction.getId());
+            statement.setString(2, touristAttraction.getSchedule().get("monday"));
+            statement.setString(3, touristAttraction.getSchedule().get("tuesday"));
+            statement.setString(4, touristAttraction.getSchedule().get("wednesday"));
+            statement.setString(5, touristAttraction.getSchedule().get("thursday"));
+            statement.setString(6, touristAttraction.getSchedule().get("friday"));
+            statement.executeUpdate();
+
+            ResultSet resultSet = statement.getGeneratedKeys();
+            resultSet.next();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
