@@ -54,6 +54,14 @@
     opacity: 1;
 }
 
+.carousel-control-next {
+    transform: translateX(40%);
+}
+
+.carousel-control-prev {
+    transform: translateX(-40%);
+}
+
 .carousel-control-next-icon {
     background-image: url('../img/right.png');
 }
