@@ -1,3 +1,6 @@
+.container-carousel {
+}
+
 .usefulInfo {
     display: flex;
     flex-direction: row;
@@ -18,6 +21,10 @@
     gap: 10px;
 }
 
+/*
+    Attraction Description
+*/
+
 .description {
     width: 30vw;
     border: 1px solid #000000;
@@ -25,5 +32,84 @@
 }
 
 .description-paragraph {
-    margin: 25px 10px 25px 10px;
+    margin: 45px 20px 45px 20px;
 }
+
+/*
+    Attraction mini Images carousel
+*/
+
+.attractionImages {
+    position: relative;
+    height: calc(564px + 30vw);
+    width: calc(564px + 30vw);
+}
+
+.attractionSlides {
+    max-height: 564px;
+    max-width: 564px;
+}
+
+.attractionColumn img {
+    max-height: 112.8px;
+    max-width: 112.8px;
+    float: left;
+}
+
+.attractionSlides {
+    display: none;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.slideNumber {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+.attractionRow:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.demo {
+    opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+    opacity: 1;
+}
+
