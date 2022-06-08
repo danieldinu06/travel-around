@@ -9,6 +9,7 @@ public class TouristAttraction {
     private String description;
     private float rating;
     private String url;
+    private String location;
     private List<String> images;
     private List<Hotel> hotels;
     private List<Restaurant> restaurants;
@@ -19,6 +20,14 @@ public class TouristAttraction {
         this.rating = rating;
         this.hotels = new ArrayList<>();
         this.restaurants = new ArrayList<>();
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getUrl() {
