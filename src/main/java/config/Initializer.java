@@ -9,7 +9,9 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @WebListener
@@ -36,6 +38,15 @@ public class Initializer implements ServletContextListener {
 
         branCastle.setUrl("http://www.castelulbran.ro");
         branCastle.setLocation("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2795.7603746299565!2d25.364975015939425!3d45.51490217910141!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b347e5a415de31%3A0xcf922792d921ab7f!2sCastelul%20Bran!5e0!3m2!1sro!2sro!4v1654683774551!5m2!1sro!2sro");
+
+        Map<String, String> branSchedule = new HashMap<>();
+        branSchedule.put("monday", "12-18");
+        branSchedule.put("tuesday", "9-18");
+        branSchedule.put("wednesday", "9-18");
+        branSchedule.put("thursday", "9-18");
+        branSchedule.put("friday", "9-18");
+
+        branCastle.setSchedule(branSchedule);
 
         Hotel conaculBratescu = new Hotel("Conacul Bratescu", "", (float)4.8, 30, branCastle);
         Hotel casaMedievala = new Hotel("Pensiunea Casa Medievala", "", (float)4.6, 25, branCastle);
