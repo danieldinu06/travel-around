@@ -1,6 +1,7 @@
 package controller;
 
 import config.TemplateEngineUtil;
+import controller.utils.SendEmail;
 import model.User;
 import model.utils.Encrypt;
 import model.utils.UserStatus;
@@ -8,12 +9,15 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import service.ApplicationService;
 
+import javax.mail.*;
+import javax.mail.internet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Properties;
 
 @WebServlet(urlPatterns = {"/register"})
 public class RegisterServlet extends HttpServlet {
@@ -59,6 +63,8 @@ public class RegisterServlet extends HttpServlet {
         httpSession = request.getSession(true);
         httpSession.setAttribute("user", newUser);
         applicationService.userDao.add(newUser);
+
+//        SendEmail sendEmail = new SendEmail("danieldinu6091", "Registration Confirmation", "Thank you for registering to our site!");
 
         response.sendRedirect(request.getContextPath() + "/");
     }
