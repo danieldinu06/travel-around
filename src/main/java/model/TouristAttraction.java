@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +23,7 @@ public class TouristAttraction {
         this.rating = rating;
         this.hotels = new ArrayList<>();
         this.restaurants = new ArrayList<>();
+        this.schedule = new HashMap<>();
     }
 
     public Map<String, String> getSchedule() {
