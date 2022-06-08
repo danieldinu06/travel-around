@@ -1,8 +1,19 @@
+.headerAttraction {
+    position: relative;
+    transform: translateX(65%);
+    width: calc(1033px - 30vw);
+}
+
 .container-carousel {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
     gap: 25px;
+}
+
+.flexContainer {
+    display: inline-block;
 }
 
 .usefulInfo {
