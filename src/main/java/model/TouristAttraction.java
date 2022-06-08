@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class TouristAttraction {
     private Integer id;
@@ -10,6 +11,7 @@ public class TouristAttraction {
     private float rating;
     private String url;
     private String location;
+    private Map<String, String> schedule;
     private List<String> images;
     private List<Hotel> hotels;
     private List<Restaurant> restaurants;
@@ -20,6 +22,14 @@ public class TouristAttraction {
         this.rating = rating;
         this.hotels = new ArrayList<>();
         this.restaurants = new ArrayList<>();
+    }
+
+    public Map<String, String> getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(Map<String, String> schedule) {
+        this.schedule = schedule;
     }
 
     public String getLocation() {
