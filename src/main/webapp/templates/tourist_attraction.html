@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <div th:fragment="tourist_attraction" th:class="container-carousel">
     <div class="flexContainer">
+
+        <!--    Attraction Info    -->
         <div class="usefulInfo">
             <div class="schedule">
                 <button class="schedule-btn" id="schedule-btn">
@@ -45,6 +47,8 @@
                 <i class='bx bx-link'></i>
             </div>
         </div>
+
+        <!--    Attraction Description and Images    -->
         <div class="aboutAttraction mt-5">
             <div class="description">
                 <p class="description-paragraph" th:text="${touristAttraction.getDescription()}">Description</p>
@@ -69,6 +73,17 @@
             </div>
         </div>
 
+        <!--    Hotels    -->
+        <div th:replace="fragments/hotels.html :: hotels" class="hotels">
+
+        </div>
+
+        <!--    Restaurants    -->
+        <div th:replace="fragments/restaurants.html :: restaurants" class="restaurants">
+
+        </div>
+
+        <!--    Google Maps    -->
         <div id="map">
             <iframe
                     th:src="${touristAttraction.getLocation()}"
