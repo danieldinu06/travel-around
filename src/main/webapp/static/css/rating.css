@@ -1,38 +1,31 @@
-.wrapper {
-    position: absolute;
+.rating {
     display: flex;
-    line-height: 20px;
+    gap: 10px;
 }
 
-.wrapper input {
-    display: none;
-}
-
-.wrapper label {
-    display: block;
-    cursor: pointer;
-    width: 30px;
-}
-
-.wrapper label:before {
-    content: '★';
+.stars-outer {
     position: relative;
-    display: block;
-    font-size: 30px;
-    color: black;
 }
 
-.wrapper label:after {
-    content: '★';
+.stars-inner {
     position: absolute;
-    display: block;
-    font-size: 30px;
-    color: gold;
     top: 0;
-    opacity: 0;
-    transition: .6s;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
 }
 
-.wrapper label:hover:after, .wrapper label:hover~label:after, .wrapper input:checked~label:after {
-    opacity: 1;
+.stars-outer::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: #ccc;
+}
+
+.stars-inner::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: #f8ce0b;
 }
