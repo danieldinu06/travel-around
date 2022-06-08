@@ -60,7 +60,7 @@
             <i class='bx bx-menu' ></i>
             <span class="text">Menu</span>
         </div>
-        <div th:class="${touristAttraction != null} ? 'header pb-0' : 'header'">
+        <div th:class="${touristAttraction != null} ? 'headerAttraction pb-0' : 'headerAttractions'">
             <h3 th:text="${touristAttraction != null} ? ${touristAttraction.getName()} : 'Tourist Attractions'">Tourist Attractions</h3>
         </div>
         <th:block th:if="${touristAttraction == null}">
