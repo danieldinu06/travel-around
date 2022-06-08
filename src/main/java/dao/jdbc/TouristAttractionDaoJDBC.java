@@ -6,7 +6,9 @@ import model.TouristAttraction;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TouristAttractionDaoJDBC implements TouristAttractionDao {
 
@@ -125,7 +127,7 @@ public class TouristAttractionDaoJDBC implements TouristAttractionDao {
 
             if(!resultSet.next()) return null;
 
-             String name = resultSet.getString(2);
+            String name = resultSet.getString(2);
             String description = resultSet.getString(3);
             float rating = resultSet.getFloat(4);
             String url = resultSet.getString(5);
@@ -198,6 +200,30 @@ public class TouristAttractionDaoJDBC implements TouristAttractionDao {
 
         } catch (SQLException e) {
             throw new RuntimeException("Error while getting TouristAttraction Images.");
+        }
+    }
+
+    public Map<String, String> getSchedule(Integer touristAttractionId) {
+        try (Connection connection = dataSource.getConnection()) {
+            String sql = "SELECT monday, tuesday, wednesday, thursday, friday FROM attraction_schedule WHERE t_attraction_id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.setInt(1, touristAttractionId);
+            ResultSet resultSet = statement.executeQuery();
+
+            Map<String, String> result = new HashMap<>();
+            while(resultSet.next()) {
+                result.put("monday", resultSet.getString("monday"));
+                result.put("tuesday", resultSet.getString("monday"));
+                result.put("wednesday", resultSet.getString("monday"));
+                result.put("thursday", resultSet.getString("monday"));
+                result.put("friday", resultSet.getString("monday"));
+            }
+
+            return result;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
