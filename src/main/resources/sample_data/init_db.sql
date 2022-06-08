@@ -31,7 +31,8 @@ CREATE TABLE tourist_attractions
     name                VARCHAR,
     description         VARCHAR,
     rating              FLOAT,
-    url                 VARCHAR
+    url                 VARCHAR,
+    location            VARCHAR
 );
 
 CREATE TABLE ta_i_seq
