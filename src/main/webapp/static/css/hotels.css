@@ -6,10 +6,9 @@
 .hotels {
     display: flex;
     flex-direction: row;
-    overflow: hidden;
     gap: 30px;
     margin: 25px 0 25px 0;
-    max-width: calc(1033px - 30vw);
+    max-width: 60vw;
 }
 
 .card-body {
