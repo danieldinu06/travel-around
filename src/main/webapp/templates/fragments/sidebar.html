@@ -76,5 +76,14 @@
         <th:block th:if="${touristAttraction != null}">
             <div th:replace="fragments/tourist_attraction.html :: tourist_attraction"></div>
         </th:block>
+
+        <footer>
+            <p class="mb-0">Copyright &copy;
+                <script>
+                    document.write(new Date().getFullYear());
+                </script>
+                Sugar, Spice & Everything Nice
+            </p>
+        </footer>
     </section>
 </div>
