@@ -42,10 +42,10 @@ public class LoginServlet extends HttpServlet {
         user = applicationService.userDao.get(name);
 
         if (user == null)
-            response.sendRedirect(request.getContextPath() + "/login");
+            doGet(request, response);
 
-        if (!Encrypt.decode(password).equals(Encrypt.decode(user.getPassword())))
-            response.sendRedirect(request.getContextPath() + "/login");
+        if (!password.equals(user.getPassword()))
+            doGet(request, response);
 
         applicationService.userDao.updateUserStatus(user);
         httpSession = request.getSession(true);
