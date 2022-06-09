@@ -1,13 +1,37 @@
 <!DOCTYPE html>
 <div th:fragment="hotels" class="hotels">
-    <div th:each="hotel : ${hotels}">
-        <div class="item" style="display: flex">
-            <div class="image">image</div>
-            <div class="details">
-                <div class="rating">rating</div>
-                <div class="description">description</div>
-                <div class="rooms_number">rooms_number</div>
+    <th:block th:each="hotel : ${hotels}">
+        <div th:id="'hotel-index' + ${hotel.getName()}" class="carousel slide carousel-multi-item" data-ride="carousel">
+            <!--      Indicators      -->
+            <ol class="carousel-indicators">
+                <li th:data-target="'#hotel-index' + ${hotel.getName()}" data-slide-to="0" class="active"></li>
+                <li th:data-target="'#hotel-index' + ${hotel.getName()}" data-slide-to="1"></li>
+            </ol>
+
+            <!--      Slides      -->
+            <div class="carousel-inner" role="listbox">
+                <div th:each="image, index : ${hotel.getImages()}"
+                     th:class="${index.index} == 0 ? 'carousel-item active' : 'carousel-item'"
+                >
+                    <img
+                            th:src="@{${image}}"
+                            class="d-block img-fluid img-thumbnail"
+                            alt="..."
+                    />
+                </div>
             </div>
+
         </div>
-    </div>
+    </th:block>
 </div>
+
+<!--<div th:each="hotel : ${hotels}">-->
+<!--    <div class="item" style="display: flex">-->
+<!--        <div class="image">image</div>-->
+<!--        <div class="details">-->
+<!--            <div class="rating">rating</div>-->
+<!--            <div class="description">description</div>-->
+<!--            <div class="rooms_number">rooms_number</div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
