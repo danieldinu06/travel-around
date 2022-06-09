@@ -8,5 +8,5 @@ import java.util.List;
 public interface HotelDao {
     void add(Hotel hotel);
     Hotel get(Integer id);
-    List<Hotel> getHotelsByTouristAttraction();
+    List<Hotel> getHotelsByTouristAttraction(Integer touristAttractionId);
 }
