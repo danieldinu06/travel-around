@@ -120,7 +120,7 @@ public class Initializer implements ServletContextListener {
 
         Hotel sunriseApartments = new Hotel("Sunrise Apartments", "", (float)5.0, 52, romanianAthenaeum);
         Hotel ussrApartments = new Hotel("USSR Apartments", "", (float)4.8, 46, romanianAthenaeum);
-        Hotel atheneePalaceHilton = new Hotel("Athénée Palace Hilton", "", (float)4.6, 38, romanianAthenaeum);
+        Hotel atheneePalaceHilton = new Hotel("Athenee Palace Hilton", "", (float)4.6, 38, romanianAthenaeum);
         Hotel parliament = new Hotel("Hotel Parliament", "", (float)4.2, 26, romanianAthenaeum);
 
         romanianAthenaeum.addHotel(sunriseApartments);
@@ -160,7 +160,7 @@ public class Initializer implements ServletContextListener {
         
         Restaurant tuya = new Restaurant("Restaurant Tuya", (float)4.7, romanianAthenaeum);
         Restaurant tratorriaIlCalcio = new Restaurant("Trattoria Il Calcio Ateneu", (float)4.2, romanianAthenaeum);
-        Restaurant relaisChateauxBistro = new Restaurant("Relais & Châteaux Bistro Ateneu", (float)4.6, romanianAthenaeum);
+        Restaurant relaisChateauxBistro = new Restaurant("Relais & Chateaux Bistro Ateneu", (float)4.6, romanianAthenaeum);
         Restaurant cafeAthenee = new Restaurant("Cafe Athenee", (float)4.5, romanianAthenaeum);
 
         romanianAthenaeum.addRestaurant(tuya);
