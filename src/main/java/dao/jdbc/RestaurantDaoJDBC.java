@@ -36,8 +36,68 @@ public class RestaurantDaoJDBC implements RestaurantDao {
             resultSet.next();
             restaurant.setId(resultSet.getInt(1));
 
+            addImages(restaurant.getId(), restaurant.getImages());
+
         } catch (SQLException e) {
             throw new RuntimeException("Error while adding new Restaurant.");
+        }
+    }
+
+    public void addImages(Integer restaurantId, List<String> images) {
+        try (Connection connection = dataSource.getConnection()) {
+            for (String image: images) {
+                String sql = "INSERT INTO restaurant_images (image) VALUES(?)";
+                PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+                statement.setString(1, image);
+                statement.executeUpdate();
+
+                ResultSet resultSet = statement.getGeneratedKeys();
+                resultSet.next();
+
+                int firstIndex = resultSet.getInt(1);
+
+                connectImages(restaurantId, firstIndex);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error while getting Hotel Images.");
+        }
+    }
+
+    public void connectImages(Integer restaurantId, int index) {
+        try (Connection connection = dataSource.getConnection()) {
+            String sql = "INSERT INTO r_i_seq (restaurant_id, restaurant_image_id) VALUES (?, ?)";
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            statement.setInt(1, restaurantId);
+            statement.setInt(2, index);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error while getting Hotel Images.");
+        }
+    }
+
+    public List<String> getImages(Integer restaurantId) {
+        try (Connection connection = dataSource.getConnection()) {
+            String sql = "SELECT image FROM restaurant_images\n" +
+                    "INNER JOIN r_i_seq ris on restaurant_images.id = ris.restaurant_image_id\n" +
+                    "LEFT OUTER JOIN restaurants r on ris.restaurant_id = r.id\n" +
+                    "WHERE r.id = ?;";
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.setInt(1, restaurantId);
+            ResultSet resultSet = statement.executeQuery();
+
+            List<String> result = new ArrayList<>();
+            while(resultSet.next()) {
+                String image = resultSet.getString(1);
+                result.add(image);
+            }
+
+            return result;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error while getting TouristAttraction Images.");
         }
     }
 
@@ -58,8 +118,11 @@ public class RestaurantDaoJDBC implements RestaurantDao {
             String name = resultSet.getString(1);
             float rating = resultSet.getFloat(2);
 
+            List<String> images = getImages(id);
+
             Restaurant restaurant = new Restaurant(name, rating, touristAttraction);
             restaurant.setId(id);
+            restaurant.setImages(images);
 
             return restaurant;
 
@@ -82,8 +145,11 @@ public class RestaurantDaoJDBC implements RestaurantDao {
                 String name = resultSet.getString(2);
                 float rating = resultSet.getFloat(4);
 
+                List<String> images = getImages(resultSet.getInt(1));
+
                 Restaurant restaurant = new Restaurant(name, rating, touristAttraction);
                 restaurant.setId(resultSet.getInt(1));
+                restaurant.setImages(images);
 
                 result.add(restaurant);
             }
@@ -98,7 +164,7 @@ public class RestaurantDaoJDBC implements RestaurantDao {
     @Override
     public List<Restaurant> getAllByTouristAttraction(Integer id) {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "SELECT name, t_attraction_id, rating FROM restaurants WHERE t_attraction_id = ?";
+            String sql = "SELECT id, name, rating FROM restaurants WHERE t_attraction_id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
 
             statement.setInt(1, id);
@@ -108,11 +174,13 @@ public class RestaurantDaoJDBC implements RestaurantDao {
             while (resultSet.next()) {
                 TouristAttraction touristAttraction = touristAttractionDao.get(id);
 
-                String name = resultSet.getString(1);
-                float rating = resultSet.getFloat(2);
+                List<String> images = getImages(resultSet.getInt(1));
+                String name = resultSet.getString(2);
+                float rating = resultSet.getFloat(3);
 
                 Restaurant restaurant = new Restaurant(name, rating, touristAttraction);
                 restaurant.setId(resultSet.getInt(1));
+                restaurant.setImages(images);
 
                 result.add(restaurant);
 
