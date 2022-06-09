@@ -61,10 +61,13 @@
                 <i class='bx bx-menu' ></i>
                 <span class="text" style="margin-top: -2px">Menu</span>
             </div>
-            <span class="title">Travel Around</span>
+            <div class="travel-around-logo" style="display: flex">
+                <img src="../../static/img/logo_proiect.png" width="39px" height="39px">
+                <span class="title">Travel Around</span>
+            </div>
         </div>
-        <div th:class="${touristAttraction != null} ? 'headerAttraction pb-0' : 'headerAttractions'">
-            <h3 th:text="${touristAttraction != null} ? ${touristAttraction.getName()} : 'Tourist Attractions'">Tourist Attractions</h3>
+        <div th:class="${touristAttraction == null} ? 'headerAttraction'">
+            <h3 th:text="${touristAttraction == null} ? 'Tourist Attractions'">Tourist Attractions</h3>
         </div>
         <th:block th:if="${touristAttraction == null}">
             <div th:replace="fragments/carousel_template.html :: carousel"></div>
