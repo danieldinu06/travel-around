@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <div th:fragment="carousel" th:class="container">
     <th:block th:each="touristAttraction : ${touristAttractions}">
-        <div th:id="'carouselExampleIndicators-' + ${touristAttraction.getName()}" class="carousel slide" data-ride="carousel">
+        <div th:id="'carouselExampleIndicators-' + ${#strings.arrayJoin(#strings.arraySplit(touristAttraction.getName(), ' '), '-')}" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
-                <li th:data-target="'#carouselExampleIndicators-' + ${touristAttraction.getName()}" data-slide-to="0" class="active"></li>
-                <li th:data-target="'#carouselExampleIndicators-' + ${touristAttraction.getName()}" data-slide-to="1"></li>
-                <li th:data-target="'#carouselExampleIndicators-' + ${touristAttraction.getName()}" data-slide-to="2"></li>
-                <li th:data-target="'#carouselExampleIndicators-' + ${touristAttraction.getName()}" data-slide-to="3"></li>
-                <li th:data-target="'#carouselExampleIndicators-' + ${touristAttraction.getName()}" data-slide-to="4"></li>
+                <li th:data-target="'#carouselExampleIndicators-' + ${touristAttraction.getName()}" th:data-slide-to="${touristAttraction.getId() - 1}" class="active"></li>
             </ol>
             <div
                     class="carousel-inner"
