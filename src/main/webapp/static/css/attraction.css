@@ -1,7 +1,6 @@
 .headerAttraction {
     position: relative;
-    transform: translateX(65%);
-    width: calc(1033px - 30vw);
+    margin: 0 auto 0 17.5vw;
 }
 
 .container-carousel {
