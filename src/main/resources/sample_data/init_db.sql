@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS hotel_images CASCADE;
 DROP TABLE IF EXISTS ta_h_seq CASCADE;
 DROP TABLE IF EXISTS rooms CASCADE;
 DROP TABLE IF EXISTS r_i_seq CASCADE;
-DROP TABLE IF EXISTS room_images CASCADE;
+DROP TABLE IF EXISTS restaurant_images CASCADE;
 DROP TABLE IF EXISTS booked_rooms CASCADE;
 DROP TABLE IF EXISTS transport CASCADE;
 DROP TABLE IF EXISTS cities CASCADE;
@@ -87,11 +87,11 @@ CREATE TABLE rooms
 
 CREATE TABLE r_i_seq
 (
-    room_id             SERIAL,
-    room_image_id       SERIAL
+    restaurant_id       SERIAL,
+    restaurant_image_id SERIAL
 );
 
-CREATE TABLE room_images
+CREATE TABLE restaurant_images
 (
     id                  SERIAL NOT NULL,
     image               VARCHAR
@@ -220,8 +220,8 @@ ALTER TABLE tourist_attraction_images
 ALTER TABLE hotel_images
     ADD CONSTRAINT pk_hotel_images_id PRIMARY KEY(id);
 
-ALTER TABLE room_images
-    ADD CONSTRAINT pk_room_images_id PRIMARY KEY(id);
+ALTER TABLE restaurant_images
+    ADD CONSTRAINT pk_restaurant_images_id PRIMARY KEY(id);
 
 ALTER TABLE ta_i_seq
     ADD CONSTRAINT fk_ta_id FOREIGN KEY (t_attraction_id) REFERENCES tourist_attractions(id),
@@ -232,8 +232,8 @@ ALTER TABLE h_i_seq
     ADD CONSTRAINT fk_h_i_id FOREIGN KEY (hotel_image_id) REFERENCES hotel_images(id);
 
 ALTER TABLE r_i_seq
-    ADD CONSTRAINT fk_r_id FOREIGN KEY (room_id) REFERENCES rooms(id),
-    ADD CONSTRAINT fk_r_i_id FOREIGN KEY (room_image_id) REFERENCES room_images(id);
+    ADD CONSTRAINT fk_r_id FOREIGN KEY (restaurant_id) REFERENCES restaurants(id),
+    ADD CONSTRAINT fk_r_i_id FOREIGN KEY (restaurant_image_id) REFERENCES restaurant_images(id);
 
 ALTER TABLE attraction_schedule
     ADD CONSTRAINT pk_id PRIMARY KEY (id),
