@@ -67,11 +67,11 @@
             <h3 th:text="${touristAttraction != null} ? ${touristAttraction.getName()} : 'Tourist Attractions'">Tourist Attractions</h3>
         </div>
         <th:block th:if="${touristAttraction == null}">
-            <div th:replace="carousel_template.html :: carousel"></div>
+            <div th:replace="fragments/carousel_template.html :: carousel"></div>
         </th:block>
 
         <th:block th:if="${touristAttraction != null}">
-            <div th:replace="tourist_attraction.html :: tourist_attraction"></div>
+            <div th:replace="fragments/tourist_attraction.html :: tourist_attraction"></div>
         </th:block>
     </section>
 </div>
