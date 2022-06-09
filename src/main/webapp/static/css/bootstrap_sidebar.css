@@ -224,6 +224,7 @@
     height: 60px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 .home-section .home-content .bx-menu,
 .home-section .home-content .text{
@@ -237,6 +238,11 @@
 .home-section .home-content .text{
     font-size: 26px;
     font-weight: 600;
+}
+.home-section .home-content .title{
+    font-size: 26px;
+    font-weight: 600;
+    padding-right: 25px;
 }
 @media (max-width: 400px) {
     .sidebar.close .nav-links li .sub-menu{
