@@ -1,6 +1,6 @@
 .headerAttraction {
     position: relative;
-    margin: 0 auto 0 17.5vw;
+    margin: 0 auto 0 17vw;
 }
 
 .container-carousel {
@@ -122,5 +122,10 @@
 .active,
 .demo:hover {
     opacity: 1;
+}
+
+.space {
+    justify-self: flex-end;
+    flex-grow: 1;
 }
 
