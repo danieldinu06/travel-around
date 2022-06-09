@@ -1,6 +1,7 @@
 package dao.jdbc;
 
 import dao.TouristAttractionDao;
+import model.Hotel;
 import model.TouristAttraction;
 
 import javax.sql.DataSource;
