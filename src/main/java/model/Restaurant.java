@@ -17,12 +17,20 @@ public class Restaurant {
         this.images = new ArrayList<>();
     }
 
+    public String getFirstImage() {
+        return this.images.get(0);
+    }
+
     public List<String> getImages() {
         return images;
     }
 
     public void addImage(String image) {
         this.images.add(image);
+    }
+
+    public void setImages(List<String> images) {
+        this.images = images;
     }
 
     public TouristAttraction getTouristAttraction() {
