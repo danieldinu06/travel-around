@@ -1,6 +1,6 @@
 .headerAttractions {
     padding: 25px 0 25px 12px;
-    float: left;
+    text-align: center;
 }
 
 .home-section {
@@ -13,9 +13,9 @@
 
 .container {
     display: flex;
+    align-items: end;
     gap: 30px;
     padding-right: 0;
-    float: left;
     clear: left;
 }
 
