@@ -11,7 +11,6 @@
             </ol>
             <div
                     class="carousel-inner"
-                    th:each="touristAttraction : ${touristAttractions}"
             >
                 <div
                         th:each="image, index : ${touristAttraction.getImages()}"
@@ -31,21 +30,20 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 </a>
             </div>
-        </div>
-    </th:block>
-    <div
-            class="carousel-review"
-            th:each="touristAttraction: ${touristAttractions}"
-    >
-        <a th:text="${touristAttraction.getName()}" class="mb-0" th:href="@{'/id/' + ${touristAttraction.getId()}}">Name</a>
+            <div
+                    class="carousel-review"
+            >
+                <a th:text="${touristAttraction.getName()}" class="mb-0" th:href="@{'/id/' + ${touristAttraction.getId()}}">Name</a>
 
-        <div class="rating">
-            <span class="number-rating" th:text="${touristAttraction.getRating()}">Rating</span>
+                <div class="rating">
+                    <span class="number-rating" th:text="${touristAttraction.getRating()}">Rating</span>
 
-            <div class="stars-outer"> <!-- Grey stars -->
-                <div class="stars-inner">  <!-- Yellow stars -->
+                    <div th:class="'stars-outer-' + ${touristAttraction.getId()}"> <!-- Grey stars -->
+                        <div th:class="'stars-inner-' + ${touristAttraction.getId()}">  <!-- Yellow stars -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </th:block>
 </div>
