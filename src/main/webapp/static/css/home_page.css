@@ -12,6 +12,8 @@
 }
 
 .container {
+    display: flex;
+    gap: 30px;
     padding-right: 0;
     float: left;
     clear: left;
