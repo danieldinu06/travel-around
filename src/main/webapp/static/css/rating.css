@@ -3,11 +3,11 @@
     gap: 10px;
 }
 
-.stars-outer {
+div[class*="stars-outer-"] {
     position: relative;
 }
 
-.stars-inner {
+div[class*="stars-inner-"] {
     position: absolute;
     top: 0;
     left: 0;
@@ -16,14 +16,14 @@
     width: 0;
 }
 
-.stars-outer::before {
+div[class*="stars-outer-"]::before {
     content: "\f005 \f005 \f005 \f005 \f005";
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     color: #ccc;
 }
 
-.stars-inner::before {
+div[class*="stars-inner-"]::before {
     content: "\f005 \f005 \f005 \f005 \f005";
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
