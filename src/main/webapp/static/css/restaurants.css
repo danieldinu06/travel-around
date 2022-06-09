@@ -12,6 +12,8 @@
 }
 
 .card-body {
+    display: flex;
+    flex-direction: column;
     max-width: 354px;
     border: 1px solid #000000;
     border-radius: 6px;
@@ -24,8 +26,7 @@
 }
 
 #restaurant-check {
-    display: flex;
-    justify-content: center;
+    align-self: center;
 }
 
 .restaurants-near-header {
