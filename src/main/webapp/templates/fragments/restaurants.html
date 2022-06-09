@@ -1,12 +1,22 @@
 <!DOCTYPE html>
- <div th:fragment="restaurants" class="restaurants">
-    <div th:each="restaurant : ${restaurants}">
-        <div class="item" style="display: flex">
-            <div class="image">image</div>
-            <div class="details">
-                <div class="rating">rating</div>
-                <div class="description">description</div>
+<div th:fragment="restaurants" class="restaurants-container">
+    <h3 class="restaurants-near-header">Restaurants near:</h3>
+    <div class="restaurants">
+        <th:block th:each="restaurant : ${restaurants}">
+            <div class="card-body" th:id="'restaurant-' + ${#strings.arrayJoin(#strings.arraySplit(restaurant.getName(), ' '), '-')}">
+                <div class="restaurant-image">
+                    <div>
+                        <img
+                                th:src="@{${restaurant.getFirstImage()}}"
+                                class="d-block img-fluid img-thumbnail"
+                                alt="...">
+                    </div>
+                </div>
+                <h4 class="card-title" th:text="${restaurant.getName()}">Hotel</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="" id="restaurant-check">Check this restaurant</a>
             </div>
-        </div>
+        </th:block>
     </div>
 </div>
