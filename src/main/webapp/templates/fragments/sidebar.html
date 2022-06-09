@@ -57,8 +57,11 @@
     </div>
     <section class="home-section">
         <div class="home-content">
-            <i class='bx bx-menu' ></i>
-            <span class="text">Menu</span>
+            <div style="display: flex">
+                <i class='bx bx-menu' ></i>
+                <span class="text" style="margin-top: -2px">Menu</span>
+            </div>
+            <span class="title">Travel Around</span>
         </div>
         <div th:class="${touristAttraction != null} ? 'headerAttraction pb-0' : 'headerAttractions'">
             <h3 th:text="${touristAttraction != null} ? ${touristAttraction.getName()} : 'Tourist Attractions'">Tourist Attractions</h3>
