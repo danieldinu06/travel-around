@@ -1,36 +1,22 @@
 <!DOCTYPE html>
-<div th:fragment="hotels" class="hotels">
-    <th:block th:each="hotel : ${hotels}">
-        <div th:id="'hotel-index' + ${hotel.getName()}" class="carousel slide carousel-multi-item" data-ride="carousel">
-            <!--      Indicators      -->
-            <ol class="carousel-indicators">
-                <li th:data-target="'#hotel-index' + ${hotel.getName()}" data-slide-to="0" class="active"></li>
-                <li th:data-target="'#hotel-index' + ${hotel.getName()}" data-slide-to="1"></li>
-            </ol>
-
-            <!--      Slides      -->
-            <div class="carousel-inner" role="listbox">
-                <div th:each="image, index : ${hotel.getImages()}"
-                     th:class="${index.index} == 0 ? 'carousel-item active' : 'carousel-item'"
-                >
-                    <img
-                            th:src="@{${image}}"
-                            class="d-block img-fluid img-thumbnail"
-                            alt="..."
-                    />
+<div th:fragment="hotels" class="hotels-container">
+    <h3 class="hotels-near-header">Hotels near:</h3>
+    <div class="hotels">
+        <th:block th:each="hotel : ${hotels}">
+            <div class="card-body" th:id="'hotel-' + ${#strings.arrayJoin(#strings.arraySplit(hotel.getName(), ' '), '-')}">
+                <div class="hotel-image">
+                    <div>
+                        <img
+                                th:src="@{${hotel.getFirstImage()}}"
+                                class="d-block img-fluid img-thumbnail"
+                                alt="...">
+                    </div>
                 </div>
+                <h4 class="card-title" th:text="${hotel.getName()}">Hotel</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="" id="hotel-check">Check this hotel</a>
             </div>
-        </div>
-    </th:block>
+        </th:block>
+    </div>
 </div>
-
-<!--<div th:each="hotel : ${hotels}">-->
-<!--    <div class="item" style="display: flex">-->
-<!--        <div class="image">image</div>-->
-<!--        <div class="details">-->
-<!--            <div class="rating">rating</div>-->
-<!--            <div class="description">description</div>-->
-<!--            <div class="rooms_number">rooms_number</div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
