@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(urlPatterns = {"/restaurants"})
+@WebServlet(urlPatterns = {"/restaurant/id/*"})
 public class RestaurantServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,6 +26,6 @@ public class RestaurantServlet extends HttpServlet {
         ApplicationService applicationService = ApplicationService.getInstance();
         Restaurant restaurant = applicationService.restaurantDao.get(1);
         webContext.setVariable("restaurant", restaurant);
-        templateEngine.process("restaurants.html", webContext, resp.getWriter());
+        templateEngine.process("index.html", webContext, resp.getWriter());
     }
 }
