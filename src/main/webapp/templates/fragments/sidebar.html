@@ -66,15 +66,28 @@
                 <span class="title">Travel Around</span>
             </div>
         </div>
-        <div th:class="${touristAttraction == null} ? 'headerAttractions'">
-            <h3 th:text="${touristAttraction == null} ? 'Tourist Attractions'">Tourist Attractions</h3>
-        </div>
-        <th:block th:if="${touristAttraction == null}">
-            <div th:replace="fragments/carousel_template.html :: carousel"></div>
+
+        <th:block th:if="${restaurant != null}">
+            <div th:replace="fragments/restaurant_template.html :: restaurant_template"></div>
+        </th:block>
+
+        <th:block th:if="${hotel != null}">
+            <div th:replace="fragments/hotel_template.html :: hotel_template"></div>
         </th:block>
 
         <th:block th:if="${touristAttraction != null}">
             <div th:replace="fragments/tourist_attraction.html :: tourist_attraction"></div>
+        </th:block>
+
+        <th:block th:if="${restaurant == null}">
+            <th:block th:if="${hotel == null}">
+                <th:block th:if="${touristAttraction == null}">
+                    <div class="headerAttractions">
+                        <h3>Tourist Attractions</h3>
+                    </div>
+                    <div th:replace="fragments/carousel_template.html :: carousel"></div>
+                </th:block>
+            </th:block>
         </th:block>
 
         <footer>
