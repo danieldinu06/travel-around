@@ -1,6 +1,7 @@
 .headerAttractions {
     padding: 25px 0 25px 12px;
-    text-align: center;
+    text-align: left;
+    transform: translateX(12.3%);
 }
 
 .home-section {
@@ -57,11 +58,11 @@
 }
 
 .carousel-control-next {
-    transform: translateX(40%);
+    transform: translateX(20%);
 }
 
 .carousel-control-prev {
-    transform: translateX(-40%);
+    transform: translateX(-20%);
 }
 
 .carousel-control-next-icon {
