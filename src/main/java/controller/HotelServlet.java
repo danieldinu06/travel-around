@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/hotels"})
+@WebServlet(urlPatterns = {"/hotel/id/*"})
 public class HotelServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -21,8 +21,11 @@ public class HotelServlet extends HttpServlet {
         WebContext webContext = new WebContext(req, resp, req.getServletContext());
 
         ApplicationService applicationService = ApplicationService.getInstance();
-        Hotel hotel = applicationService.hotelDao.get(1);
+        Integer id = Integer.valueOf(req.getPathInfo().substring(1));
+        Hotel hotel = applicationService.hotelDao.get(id);
+
+
         webContext.setVariable("hotel", hotel);
-        templateEngine.process("hotels.html", webContext, resp.getWriter());
+        templateEngine.process("index.html", webContext, resp.getWriter());
     }
 }
