@@ -54,7 +54,8 @@ CREATE TABLE hotels
     name                VARCHAR,
     description         VARCHAR,
     rating              FLOAT,
-    rooms_number        INT
+    rooms_number        INT,
+    location            VARCHAR
 );
 
 CREATE TABLE h_i_seq
@@ -137,8 +138,10 @@ CREATE TABLE restaurants
 (
     id                  SERIAL NOT NULL,
     name                VARCHAR,
+    description         VARCHAR,
     t_attraction_id     SERIAL,
-    rating              FLOAT
+    rating              FLOAT,
+    location            VARCHAR
 );
 
 CREATE TYPE USER_STATUS AS ENUM
