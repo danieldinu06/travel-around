@@ -54,10 +54,15 @@ public class RegisterServlet extends HttpServlet {
 
 
         if (user != null) {
-            if ((user.getName().equals(newUser.getName())) || (!Encrypt.decode(password).equals(Encrypt.decode(passwordConfirmation)))) {
+            if (user.getName().equals(newUser.getName())) {
                 response.sendRedirect(request.getContextPath() + "/register");
                 return;
             }
+        }
+
+        if (!(password.equals(passwordConfirmation))) {
+            response.sendRedirect(request.getContextPath() + "/register");
+            return;
         }
 
         httpSession = request.getSession(true);
