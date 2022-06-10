@@ -1,4 +1,23 @@
 <!DOCTYPE html>
-<div th:fragment="restaurant_template">
+<div th:fragment="restaurant_template" class="restaurant">
+    <div class="restaurantHeader">
+        <h3 th:text="${restaurant.getName()}">Tourist Attraction</h3>
+    </div>
+    <div class="restaurantImages">
+        <div th:each="image : ${restaurant.getImages()}">
+            <img class="restaurantImage" th:src="${image}" th:alt="${restaurant.getName()}">
+        </div>
+    </div>
 
+    <!--    Google Maps    -->
+    <div id="restaurantMap">
+        <iframe
+                th:src="${restaurant.getLocation()}"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+    <!--    /.Google Maps    -->
 </div>
