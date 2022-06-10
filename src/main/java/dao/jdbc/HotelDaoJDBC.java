@@ -25,12 +25,13 @@ public class HotelDaoJDBC implements HotelDao {
     @Override
     public void add(Hotel hotel) {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "INSERT INTO hotels (name, description, rating, rooms_number) VALUES(?, ?, ?, ?)";
+            String sql = "INSERT INTO hotels (name, description, rating, rooms_number, location) VALUES(?, ?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, hotel.getName());
             statement.setString(2, hotel.getDescription());
             statement.setFloat(3, hotel.getRating());
             statement.setInt(4, hotel.getRooms_number());
+            statement.setString(5, hotel.getLocation());
 
             statement.executeUpdate();
             ResultSet resultSet = statement.getGeneratedKeys();
@@ -96,7 +97,7 @@ public class HotelDaoJDBC implements HotelDao {
     @Override
     public Hotel get(Integer id) {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "SELECT name, description, rating, rooms_number FROM hotels WHERE id = ?;";
+            String sql = "SELECT name, description, rating, rooms_number, location FROM hotels WHERE id = ?;";
             PreparedStatement statement = connection.prepareStatement(sql);
 
             statement.setInt(1, id);
@@ -106,16 +107,18 @@ public class HotelDaoJDBC implements HotelDao {
 
             TouristAttraction touristAttraction = touristAttractionDao.get(getTouristAttractionId(id));
 
-            List<String> images = getImages(resultSet.getInt(1));
+            List<String> images = getImages(id);
 
             String name = resultSet.getString(1);
             String description = resultSet.getString(2);
             float rating = resultSet.getFloat(3);
             int rooms_number = resultSet.getInt(4);
+            String location = resultSet.getString(5);
 
             Hotel hotel = new Hotel(name, description, rating, rooms_number, touristAttraction);
             hotel.setId(id);
             hotel.setImages(images);
+            hotel.setLocation(location);
 
             return hotel;
 
@@ -163,11 +166,13 @@ public class HotelDaoJDBC implements HotelDao {
                 String description = resultSet.getString(3);
                 float rating = resultSet.getFloat(4);
                 int rooms_number = resultSet.getInt(5);
+                String location = resultSet.getString(6);
 
 
                 Hotel hotel = new Hotel(name, description, rating, rooms_number, touristAttraction);
                 hotel.setId(resultSet.getInt(1));
                 hotel.setImages(images);
+                hotel.setLocation(location);
 
                 result.add(hotel);
             }
@@ -179,7 +184,7 @@ public class HotelDaoJDBC implements HotelDao {
         }
     }
 
-    public List<String> getImages(Integer touristAttractionId) {
+    public List<String> getImages(Integer hotelId) {
         try (Connection connection = dataSource.getConnection()) {
             String sql = "SELECT image FROM hotel_images\n" +
                     "INNER JOIN h_i_seq his on hotel_images.id = his.hotel_image_id\n" +
@@ -187,7 +192,7 @@ public class HotelDaoJDBC implements HotelDao {
                     "WHERE h.id = ?;";
             PreparedStatement statement = connection.prepareStatement(sql);
 
-            statement.setInt(1, touristAttractionId);
+            statement.setInt(1, hotelId);
             ResultSet resultSet = statement.executeQuery();
 
             List<String> result = new ArrayList<>();
