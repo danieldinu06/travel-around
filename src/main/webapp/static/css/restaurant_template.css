@@ -1,0 +1,28 @@
+.restaurant {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 20vw 0 20vw;
+}
+
+.restaurantHeader {
+    padding: 50px 0 50px 0;
+    align-self: start;
+}
+
+.restaurantImages {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 0 5vh 0;
+}
+
+.restaurantImage {
+    width: 500px;
+}
+
+#restaurantMap {
+    width: 100%;
+    height: 35vh;
+}
