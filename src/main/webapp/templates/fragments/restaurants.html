@@ -13,10 +13,10 @@
                     </div>
                 </div>
                 <h4 class="card-title" th:text="${restaurant.getName()}">Hotel</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                <p class="card-text" th:text="${restaurant.getDescription()}">Some quick example text to build on the card title and make up the bulk of the
                     card's content.</p>
                 <div class="space"></div>
-                <a href="" id="restaurant-check">Check this restaurant</a>
+                <a th:href="@{'/restaurant/id/'+${restaurant.getId()}}" id="restaurant-check">Check this restaurant</a>
             </div>
         </th:block>
     </div>
