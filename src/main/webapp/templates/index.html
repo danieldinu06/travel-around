@@ -11,14 +11,16 @@
             integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
             crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../static/css/bootstrap_sidebar.css">
-    <link rel="stylesheet" href="../static/css/rating.css">
-    <link rel="stylesheet" href="../static/css/map.css">
-    <link rel="stylesheet" href="../static/css/attraction.css">
-    <link rel="stylesheet" href="../static/css/home_page.css">
-    <link rel="stylesheet" href="../static/css/modal.css">
-    <link rel="stylesheet" href="../static/css/hotels.css">
-    <link rel="stylesheet" href="../static/css/restaurants.css">
+    <link rel="stylesheet" th:href="@{/static/css/bootstrap_sidebar.css}">
+    <link rel="stylesheet" th:href="@{/static/css/rating.css}">
+    <link rel="stylesheet" th:href="@{/static/css/map.css}">
+    <link rel="stylesheet" th:href="@{/static/css/attraction.css}">
+    <link rel="stylesheet" th:href="@{/static/css/home_page.css}">
+    <link rel="stylesheet" th:href="@{/static/css/modal.css}">
+    <link rel="stylesheet" th:href="@{/static/css/hotels.css}">
+    <link rel="stylesheet" th:href="@{/static/css/restaurants.css}">
+    <link rel="stylesheet" th:href="@{/static/css/restaurant_template.css}">
+    <link rel="stylesheet" th:href="@{/static/css/hotel_template.css}">
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,10 +45,10 @@
 
 <div th:replace="fragments/sidebar.html :: sidebar"></div>
 
-<script src="../static/js/sidebar.js"></script>
-<script src="../static/js/visitWebsite.js"></script>
-<script src="../static/js/modal.js"></script>
-<script src="../static/js/rating.js"></script>
-<script src="../static/js/attractionSlide.js"></script>
+<script th:src="@{/static/js/sidebar.js}"></script>
+<script th:src="@{/static/js/visitWebsite.js}"></script>
+<script th:src="@{/static/js/modal.js}"></script>
+<script th:src="@{/static/js/rating.js}"></script>
+<script th:src="@{/static/js/attractionSlide.js}"></script>
 </body>
 </html>
