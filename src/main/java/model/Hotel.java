@@ -13,6 +13,7 @@ public class Hotel {
     private float rating;
 
     private int rooms_number;
+    private String location;
 
     private List<Room> rooms;
     private List<String> images;
@@ -27,6 +28,14 @@ public class Hotel {
         this.touristAttraction = touristAttraction;
         this.rooms = new ArrayList<>();
         this.images = new ArrayList<>();
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getFirstImage() {
