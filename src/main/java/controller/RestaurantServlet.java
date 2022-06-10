@@ -19,13 +19,16 @@ import java.io.PrintWriter;
 @WebServlet(urlPatterns = {"/restaurant/id/*"})
 public class RestaurantServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        TemplateEngine templateEngine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
-        WebContext webContext = new WebContext(req, resp, req.getServletContext());
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        TemplateEngine templateEngine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
+        WebContext webContext = new WebContext(request, response, request.getServletContext());
 
         ApplicationService applicationService = ApplicationService.getInstance();
-        Restaurant restaurant = applicationService.restaurantDao.get(1);
+
+        Integer id = Integer.valueOf(request.getPathInfo().substring(1));
+        Restaurant restaurant = applicationService.restaurantDao.get(id);
+
         webContext.setVariable("restaurant", restaurant);
-        templateEngine.process("index.html", webContext, resp.getWriter());
+        templateEngine.process("index.html", webContext, response.getWriter());
     }
 }
