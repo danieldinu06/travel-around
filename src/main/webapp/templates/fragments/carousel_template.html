@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<div th:fragment="carousel" th:class="container">
+    <th:block th:each="touristAttraction : ${touristAttractions}">
+        <div th:id="'carouselExampleIndicators-' + ${#strings.arrayJoin(#strings.arraySplit(touristAttraction.getName(), ' '), '-')}" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li th:data-target="'#carouselExampleIndicators-' + ${#strings.arrayJoin(#strings.arraySplit(touristAttraction.getName(), ' '), '-')}" th:data-slide-to="${touristAttraction.getId() - 1}" class="active"></li>
+            </ol>
+            <div
+                    class="carousel-inner"
+            >
+                <div
+                        th:each="image, index : ${touristAttraction.getImages()}"
+                        th:class="${index.index} == 0 ? 'carousel-item active' : 'carousel-item'"
+                >
+                    <img
+                            th:src="@{${image}}"
+                            class="d-block img-fluid img-thumbnail"
+                            alt="..."
+                    />
+                </div>
+
+                <a class="carousel-control-prev" th:href="@{'#carouselExampleIndicators-' + ${#strings.arrayJoin(#strings.arraySplit(touristAttraction.getName(), ' '), '-')}}" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" th:href="@{'#carouselExampleIndicators-' + ${#strings.arrayJoin(#strings.arraySplit(touristAttraction.getName(), ' '), '-')}}" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+            <div
+                    class="carousel-review"
+            >
+                <a th:text="${touristAttraction.getName()}" class="mb-0" th:href="@{'/id/' + ${touristAttraction.getId()}}">Name</a>
+
+                <div class="rating">
+                    <span class="number-rating" th:text="${touristAttraction.getRating()}">Rating</span>
+
+                    <div th:class="'stars-outer-' + ${touristAttraction.getId()}"> <!-- Grey stars -->
+                        <div th:class="'stars-inner-' + ${touristAttraction.getId()}">  <!-- Yellow stars -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</div>

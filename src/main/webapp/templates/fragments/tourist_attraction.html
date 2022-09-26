@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<div th:fragment="tourist_attraction" th:class="container-carousel">
+    <div class="headerAttraction pb-0">
+        <h3 th:text="${touristAttraction.getName()}">Tourist Attraction</h3>
+    </div>
+    <div class="flexContainer">
+
+        <!--    Attraction Info    -->
+        <div class="usefulInfo">
+            <div class="schedule">
+                <button class="schedule-btn" id="schedule-btn">
+                    <span>Visit Hours</span>
+                </button>
+                <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <p>Schedule</p>
+                        <table>
+                            <tr>
+                                <td>Monday</td>
+                                <td th:text="${touristAttraction.getSchedule().get('monday')}"></td>
+                            </tr>
+                            <tr>
+                                <td>Tuesday</td>
+                                <td th:text="${touristAttraction.getSchedule().get('tuesday')}"></td>
+                            </tr>
+                            <tr>
+                                <td>Wednesday</td>
+                                <td th:text="${touristAttraction.getSchedule().get('wednesday')}"></td>
+                            </tr>
+                            <tr>
+                                <td>Thursday</td>
+                                <td th:text="${touristAttraction.getSchedule().get('thursday')}"></td>
+                            </tr>
+                            <tr>
+                                <td>Friday</td>
+                                <td th:text="${touristAttraction.getSchedule().get('friday')}"></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="website">
+                <button class="website-btn" th:url="${touristAttraction.getUrl()}">
+                    <span>View Website</span>
+                </button>
+                <i class='bx bx-link'></i>
+            </div>
+        </div>
+        <!--   /.Attraction Info     -->
+
+
+        <!--    Attraction Description and Images    -->
+        <div class="aboutAttraction mt-5">
+
+            <div class="description">
+                <p class="description-paragraph" th:text="${touristAttraction.getDescription()}">Description</p>
+            </div>
+
+            <div class="attractionImages">
+                <!--    Image with its index    -->
+                <div class="attractionSlides" th:each="image, index : ${touristAttraction.getImages()}">
+                    <div class="slideNumber" th:text="${index.index + 1} + ' / 5'"></div>
+                    <img th:src="${image}" style="width: 100%" alt="">
+                </div>
+                <!--    /.Image with its index    -->
+
+
+                <!--    Next and Prev buttons    -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                <!--    /.Next and Prev buttons    -->
+
+
+                <!--    Thumbnail Images    -->
+                <div class="attractionRow">
+                    <div class="attractionColumn" th:each="image, index : ${touristAttraction.getImages()}">
+                        <img th:src="${image}" th:alt="${touristAttraction.getName()}" class="demo cursor" th:onclick="currentSlide(${index.index})">
+                    </div>
+                </div>
+                <!--    /.Thumbnail Images    -->
+            </div>
+
+        </div>
+        <!--    /.Attraction Description and Images    -->
+
+        <!--    Hotels    -->
+        <div th:replace="fragments/hotels.html :: hotels" class="hotels-container">
+        <!--    /.Hotels    -->
+
+        </div>
+
+        <!--    Restaurants    -->
+        <div th:replace="fragments/restaurants.html :: restaurants" class="restaurants-container">
+        <!--    /.Restaurants    -->
+
+        </div>
+
+        <!--    Google Maps    -->
+        <div id="map">
+            <iframe
+                    th:src="${touristAttraction.getLocation()}"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+        <!--    /.Google Maps    -->
+    </div>
+</div>

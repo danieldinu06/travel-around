@@ -1,0 +1,97 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class attraction_schedule {
+   t_attraction_id: integer
+   monday: varchar
+   tuesday: varchar
+   wednesday: varchar
+   thursday: varchar
+   friday: varchar
+   id: integer
+}
+class h_i_seq {
+   hotel_id: integer
+   hotel_image_id: integer
+}
+class hotel_images {
+   image: varchar
+   id: integer
+}
+class hotels {
+   name: varchar
+   description: varchar
+   rating: double precision
+   rooms_number: integer
+   location: varchar
+   id: integer
+}
+class r_i_seq {
+   restaurant_id: integer
+   restaurant_image_id: integer
+}
+class restaurant_images {
+   image: varchar
+   id: integer
+}
+class restaurants {
+   name: varchar
+   description: varchar
+   t_attraction_id: integer
+   rating: double precision
+   location: varchar
+   id: integer
+}
+class rooms {
+   hotel_id: integer
+   bedrooms: integer
+   floor: integer
+   price: double precision
+   id: integer
+}
+class ta_h_seq {
+   id: integer
+   hotel_id: integer
+   t_attraction_id: integer
+}
+class ta_i_seq {
+   t_attraction_id: integer
+   ta_image_id: integer
+}
+class tourist_attraction_images {
+   image: varchar
+   id: integer
+}
+class tourist_attractions {
+   name: varchar
+   description: varchar
+   rating: double precision
+   url: varchar
+   location: varchar
+   id: integer
+}
+class users {
+   name: varchar
+   email: varchar
+   password: varchar
+   phone_number: varchar
+   billing_address: varchar
+   user_status: user_status
+   id: integer
+}
+
+attraction_schedule        -[#595959,plain]-^  tourist_attractions       : "t_attraction_id:id"
+h_i_seq                    -[#595959,plain]-^  hotel_images              : "hotel_image_id:id"
+h_i_seq                    -[#595959,plain]-^  hotels                    : "hotel_id:id"
+r_i_seq                    -[#595959,plain]-^  restaurant_images         : "restaurant_image_id:id"
+r_i_seq                    -[#595959,plain]-^  restaurants               : "restaurant_id:id"
+restaurants                -[#595959,plain]-^  tourist_attractions       : "t_attraction_id:id"
+rooms                      -[#595959,plain]-^  hotels                    : "hotel_id:id"
+ta_h_seq                   -[#595959,plain]-^  hotels                    : "hotel_id:id"
+ta_h_seq                   -[#595959,plain]-^  tourist_attractions       : "t_attraction_id:id"
+ta_i_seq                   -[#595959,plain]-^  tourist_attraction_images : "ta_image_id:id"
+ta_i_seq                   -[#595959,plain]-^  tourist_attractions       : "t_attraction_id:id"
+@enduml

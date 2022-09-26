@@ -1,0 +1,36 @@
+.restaurants-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.restaurants {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin: 25px 0 25px 0;
+    max-width: 60vw;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    max-width: 354px;
+    border: 1px solid #000000;
+    border-radius: 6px;
+}
+
+.restaurant-image,
+.card-title,
+.card-text {
+    margin: 10px;
+}
+
+#restaurant-check {
+    align-self: center;
+}
+
+.restaurants-near-header {
+    margin-top: 25px;
+}
+
+

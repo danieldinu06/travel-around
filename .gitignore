@@ -1,0 +1,15 @@
+.idea/
+
+src/main/resources/db.properties
+
+target/
+
+node_modules/
+package.json
+package-lock.json
+src/main/webapp/templates/.idea
+src/main/webapp/templates/node_modules/
+src/main/webapp/templates/package.json
+src/main/webapp/templates/package-lock.json
+
+!.gitignore

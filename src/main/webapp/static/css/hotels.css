@@ -1,0 +1,36 @@
+.hotels-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.hotels {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin: 25px 0 25px 0;
+    max-width: 60vw;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    max-width: 354px;
+    border: 1px solid #000000;
+    border-radius: 6px;
+}
+
+.hotel-image,
+.card-title,
+.card-text {
+    margin: 10px;
+}
+
+#hotel-check {
+    align-self: center;
+}
+
+.hotels-near-header {
+    margin-top: 25px;
+}
+
+
