@@ -45,11 +45,6 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${version.plugin.jetty}</version>
                 <configuration>
-<<<<<<< HEAD
-=======
-                    <!-- On some configs this causes shutdown of context on -->
-                    <!-- a page load so disabled. -->
->>>>>>> travel0around/development
                      <reload>automatic</reload>
                      <scanIntervalSeconds>1</scanIntervalSeconds>
                     <httpConnector>
@@ -72,21 +67,11 @@
             <artifactId>gson</artifactId>
             <version>2.9.0</version>
         </dependency>
-<<<<<<< HEAD
-=======
-        <!-- See comment at jetty plugin -->
-        <!-- <dependency> -->
-        <!--   <groupId>org.eclipse.jetty</groupId> -->
-        <!--   <artifactId>jetty-io</artifactId> -->
-        <!--   <version>${jetty.version}</version> -->
-        <!-- </dependency> -->
->>>>>>> travel0around/development
         <dependency>
             <groupId>org.thymeleaf</groupId>
             <artifactId>thymeleaf</artifactId>
             <version>${version.thymeleaf}</version>
         </dependency>
-<<<<<<< HEAD
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -102,7 +87,5 @@
             <artifactId>jinjava</artifactId>
             <version>2.6.0</version>
         </dependency>
-=======
->>>>>>> travel0around/development
     </dependencies>
 </project>

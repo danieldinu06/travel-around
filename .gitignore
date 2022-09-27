@@ -1,5 +1,7 @@
 .idea/
 
+src/main/resources/db.properties
+
 target/
 
 node_modules/
@@ -11,23 +13,3 @@ src/main/webapp/templates/package.json
 src/main/webapp/templates/package-lock.json
 
 !.gitignore
-*.class
-
-# OS-X
-**/.DS_Store
-
-# IntelliJ
-.idea/
-target/
-*.iml
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.ear
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
