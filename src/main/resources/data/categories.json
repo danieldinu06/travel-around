@@ -1,0 +1,40 @@
+{
+    "categories": [
+        {
+            "id": 1,
+            "name": "Course",
+            "department": "Programming",
+            "description": "Learn programming."
+        },
+        {
+            "id": 2,
+            "name": "Tablet",
+            "department": "Hardware",
+            "description": "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display."
+        },
+        {
+            "id": 3,
+            "name": "Smartphone",
+            "department": "Hardware",
+            "description": "A mobile device used to be in touch with friends and family online and offline."
+        },
+        {
+            "id": 4,
+            "name": "Car",
+            "department": "Vehicle",
+            "description": "A vechicle not only for trips, but for great and amazing experiences."
+        },
+        {
+            "id": 5,
+            "name": "Gun",
+            "department": "Weapon",
+            "description": "Feel like being a PSYCHOPAT? Get it and go to the streets."
+        },
+        {
+            "id": 6,
+            "name": "Money",
+            "department": "Fraud",
+            "description": "Whatever you pay, we give 10x your value back. Pinky promise."
+        }
+    ]
+}
