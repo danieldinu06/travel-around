@@ -12,7 +12,7 @@ Travel Around was created to demonstrate a good understanging about basics of Ja
 ## PostgreSQL Schema
 Using JDBC, DAO and MVC architecture, the schema looks as follows:
 
-image
+![schema](./Pictures/schema.png)
 
 ## Getting started
 ### Backend
